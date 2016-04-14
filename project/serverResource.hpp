@@ -2736,31 +2736,31 @@ int apollo(HttpServer& server,string url)
            
         basic_ptree<std::string, std::string> retJson;
 
-            redisReply* exists=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"exists {flow_number}:id"));
-            int retint=exists->integer;
-            freeReplyObject(exists);
-            if(retint)
-            {
+        redisReply* exists=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"exists {flow_number}:id"));
+        int retint=exists->integer;
+        freeReplyObject(exists);
+        if(retint)
+        {
 
-                redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "incr {flow_number}:id"));
-                freeReplyObject(incr);
-                redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "get {flow_number}:id"));
-                string value="";
-                //cout<<__LINE__<<endl;
-                if(reply->str!=nullptr)
-                {
-                    //cout<<reply->type<<endl;
-                    string value(reply->str);
-                  retJson.put<std::string>("flow_number",value);
-                }
-                freeReplyObject(reply);
-            }
-            else
+            redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "incr {flow_number}:id"));
+            freeReplyObject(incr);
+            redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "get {flow_number}:id"));
+            string value="";
+            //cout<<__LINE__<<endl;
+            if(reply->str!=nullptr)
             {
-                 redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "set {flow_number}:id 0"));
-                freeReplyObject(reply);
+                //cout<<reply->type<<endl;
+                string value(reply->str);
+              retJson.put<std::string>("flow_number",value);
             }
+            freeReplyObject(reply);
         }
+        else
+        {
+             redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "set {flow_number}:id 0"));
+            freeReplyObject(reply);
+        }
+        
         
         std::stringstream ss;
         write_json(ss, retJson);
