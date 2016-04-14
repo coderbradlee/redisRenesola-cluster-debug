@@ -30,14 +30,14 @@ int main() {
 	/////////test http client start ////////////////////////////////////////////////////////////////////////////
 	 //Wait for server to start so that the client can connect
     this_thread::sleep_for(chrono::seconds(3));
-	//HttpClient client("localhost:8080");
-    // curl -X POST http://localhost:8080/t_function_get -d "{\"function_id\":\"A1\"}"
- //  { string json="{\"operation\":\"CREATE_SESSION\",\"requestData\":[{\"sessionId\":\"0\",\"value\":{}}],\"requestor\":\"apollo-employee-portal\",\"requestTime\":\"2015-05-25 08:00:00\"}";
- //   stringstream ss(json);    
- //   auto r2=client.request("POST", "/apollo", ss);
- //   cout << r2->content.rdbuf() << endl;
- //  }
- //  cout<<"*****************************************"<<endl;
+	HttpClient client("localhost:8388");
+    curl -X POST http://localhost:8080/t_function_get -d "{\"function_id\":\"A1\"}"
+  { string json="";
+   stringstream ss(json);    
+   auto r2=client.request("GET", "/apollo", ss);
+   cout << r2->content.rdbuf() << endl;
+  }
+  cout<<"*****************************************"<<endl;
 	/////////////test http client end /////////////////////////////////////////////////////////////////////////////
 	//{
 	//	string json="{\"operation\":\"ADD_USERID_UNDER_SESSION\",\"requestData\":[{\"sessionId\":\"0\",\"value\":{\"userId\":\"0\"}}],\"requestor\":\"apollo-employee-portal\",\"requestTime\":\"2015-05-25 08:00:00\"}";

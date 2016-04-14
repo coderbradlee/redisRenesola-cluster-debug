@@ -2729,6 +2729,63 @@ int apollo(HttpServer& server,string url)
 {
 	try
 	{
+
+        server.resource["^/flow_number$"]["GET"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
+        try 
+        {
+           
+        basic_ptree<std::string, std::string> retJson;
+
+            redisReply* exists=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"exists {flow_number}:id"));
+            int retint=exists->integer;
+            freeReplyObject(exists);
+            if(retint)
+            {
+
+                redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "incr {flow_number}:id"));
+                freeReplyObject(incr);
+                redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "get {flow_number}:id"));
+                string value="";
+                //cout<<__LINE__<<endl;
+                if(reply->str!=nullptr)
+                {
+                    //cout<<reply->type<<endl;
+                    string value(reply->str);
+                  retJson.put<std::string>("flow_number",value);
+                }
+                freeReplyObject(reply);
+            }
+            else
+            {
+                 redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "set {flow_number}:id 0"));
+                freeReplyObject(reply);
+            }
+        }
+        
+        std::stringstream ss;
+        write_json(ss, retJson);
+        //在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+        string temp=ss.str();
+        response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
+        }
+        catch(json_parser_error& e) 
+        {
+            string temp="json error";
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
+            return -1;
+        }
+        catch(exception& e) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
+            return -1;
+        }
+        catch(...) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
+            return -1;
+        }
+    };
+
+
+
 	//set t_function:A1 "{\"function_id\":\"A1\",\"code\":\"a1\",\"name\":\"a1name\",\"description\":\"a1descrip\",\"up_level_function_id\":null,\"level\":1,\"type\":1,\"note\":\"Alibaba\",\"dr\":0,\"data_version\":1}"
     server.resource["^/"+url+"$"]["POST"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
         try {
