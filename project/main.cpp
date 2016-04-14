@@ -30,7 +30,7 @@ int main() {
 	/////////test http client start ////////////////////////////////////////////////////////////////////////////
 	 //Wait for server to start so that the client can connect
     this_thread::sleep_for(chrono::seconds(3));
-	HttpClient client("localhost:8388");
+	HttpClient client("localhost:8088");
    // curl -X POST http://localhost:8080/t_function_get -d "{\"function_id\":\"A1\"}"
   { string json="";
    stringstream ss(json);    
