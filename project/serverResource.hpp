@@ -2736,31 +2736,19 @@ int apollo(HttpServer& server,string url)
            
         basic_ptree<std::string, std::string> retJson;
 
-        redisReply* exists=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p,"{flow_number}:id","exists {flow_number}:id"));
-        int retint=exists->integer;
-        freeReplyObject(exists);
-        if(retint)
+        redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
+        freeReplyObject(incr);
+        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
+        string value="0";
+        //cout<<__LINE__<<endl;
+        if(reply->str!=nullptr)
         {
+            //cout<<reply->type<<endl;
+            string value(reply->str);
+          retJson.put<std::string>("flow_number",value);
+        }
+        freeReplyObject(reply);
 
-            redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
-            freeReplyObject(incr);
-            redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
-            string value="";
-            //cout<<__LINE__<<endl;
-            if(reply->str!=nullptr)
-            {
-                //cout<<reply->type<<endl;
-                string value(reply->str);
-              retJson.put<std::string>("flow_number",value);
-            }
-            freeReplyObject(reply);
-        }
-        else
-        {
-             redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "set {flow_number}:id 0"));
-            freeReplyObject(reply);
-        }
-        
         
         std::stringstream ss;
         write_json(ss, retJson);
