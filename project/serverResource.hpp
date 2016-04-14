@@ -2734,26 +2734,26 @@ int apollo(HttpServer& server,string url)
         try 
         {
            
-        basic_ptree<std::string, std::string> retJson;
+        //basic_ptree<std::string, std::string> retJson;
 
         redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
         freeReplyObject(incr);
         redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
-        string value="0";
+        string value="";
         //cout<<__LINE__<<endl;
         if(reply->str!=nullptr)
         {
             //cout<<reply->type<<endl;
-            string value(reply->str);
-          retJson.put<std::string>("flow_number",value);
+          value+=reply->str;
+          //retJson.put<std::string>("flow_number",value);
         }
         freeReplyObject(reply);
 
-        
-        std::stringstream ss;
-        write_json(ss, retJson);
-        //在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
-        string temp=ss.str();
+        string temp="{\"flow_number\":"+value+"}";
+        // std::stringstream ss;
+        // write_json(ss, retJson);
+        // //在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+        // string temp=ss.str();
         response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
         }
         catch(json_parser_error& e) 
