@@ -34,7 +34,7 @@ int main() {
    // curl -X POST http://localhost:8080/t_function_get -d "{\"function_id\":\"A1\"}"
   { string json="";
    stringstream ss(json);    
-   auto r2=client.request("GET", "/apollo", ss);
+   auto r2=client.request("GET", "/flow_number", ss);
    cout << r2->content.rdbuf() << endl;
   }
   cout<<"*****************************************"<<endl;
