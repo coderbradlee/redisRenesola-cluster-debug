@@ -554,7 +554,7 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
         cout<<value<<":"<<__FILE__<<""<<__LINE__<<endl;
         ptime now = second_clock::local_time();  
         string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
-        string temp="{\"flowNo\":"+value+",\"replyTime\" : \""+now_str+"\"}";
+        string temp="{\"flowNo\":\""+value+"\",\"replyTime\" : \""+now_str+"\"}";
 
         cout<<temp<<":"<<__FILE__<<""<<__LINE__<<endl;
         // std::stringstream ss;
@@ -589,6 +589,7 @@ void defaultindex(HttpServer& server)
         if(path.compare(0,temp.length(),temp) == 0)
         {
             deal_with_flow_number(response,request);
+            return;
         }
 		//Replace all ".." with "." (so we can't leave the web-directory)
 		size_t pos;
