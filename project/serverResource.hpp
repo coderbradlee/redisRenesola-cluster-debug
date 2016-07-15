@@ -523,7 +523,7 @@ void defaultindex(HttpServer& server)
 		string filename="web";
         
 		string path=request->path;
-        
+        cout<<path<<endl;
 		//Replace all ".." with "." (so we can't leave the web-directory)
 		size_t pos;
 		while((pos=path.find(".."))!=string::npos) {
