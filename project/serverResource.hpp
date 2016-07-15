@@ -2731,7 +2731,7 @@ int apollo(HttpServer& server,string url)
 {
 	try
 	{
-         server.resource["^/flow_number/*$"]["GET"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
+         server.resource["^/flowNo/*$"]["GET"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
         try 
         {
             cout<<request->path<<endl;
@@ -2759,7 +2759,9 @@ int apollo(HttpServer& server,string url)
         }
         freeReplyObject(reply);
 
-        string temp="{\"flow_number\":"+value+"}";
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        string temp="{\"flowNo\":"+value+",\"replyTime\" : \""+now_str+"\"}";
         // std::stringstream ss;
         // write_json(ss, retJson);
         // //在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
