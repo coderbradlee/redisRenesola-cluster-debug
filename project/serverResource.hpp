@@ -40,6 +40,8 @@ string redisHost;
 string redisPort;
 string redisPassword;
 string url;
+string flow_number_param1;
+string flow_number_param2;
 ///∂®“Âredisø‚
 #define KV_SYS_PARAMS 0
 #define KV_MF 1
@@ -2733,12 +2735,21 @@ int apollo(HttpServer& server,string url)
         server.resource["^/flow_number$"]["GET"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
         try 
         {
-           
-        //basic_ptree<std::string, std::string> retJson;
-
-        redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
+           ptree pt;
+            ////cout<<__LINE__<<endl;
+            read_json(request->content, pt);
+            
+            ////cout<<__LINE__<<endl;
+            string type=flow_number_param1;
+            string company=flow_number_param2;
+            string id_name="{"+type+"_"+company+"_"+"flow_number}:id";
+            string incr_command="incr "+id_name;
+            string get_command="get "+id_name;
+        //redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
+            redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name, incr_command));
         freeReplyObject(incr);
-        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
+        //redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
+        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name, get_command));
         string value="";
         //cout<<__LINE__<<endl;
         if(reply->str!=nullptr)
