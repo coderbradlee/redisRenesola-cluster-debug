@@ -283,16 +283,17 @@ namespace SimpleWeb {
 					//复制一份回去
 					std::iostream os(&(request->streambuf));
 					os<<myString;
-				    BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<" "<<myString;
-                    initsink->flush();
+				    //BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<" "<<myString;
+                    //initsink->flush();
 					if(!myString.empty()||!myString.empty())
 					{
 					   //BOOST_LOG(test_lg::get())<<"request: "<<request->method<<" "<<request->path<<" "<<myString;
 					 //src::severity_logger< severity_level > slg;
     // These two lines test filtering based on severity
-    // BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<" "<<myString;
-				// 	}
-				// 	initsink->flush();
+    
+					}
+                    BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<" "<<myString;
+					initsink->flush();
 				// 	//////******************************************/////////////////
 		
                     //If content, read that as well
