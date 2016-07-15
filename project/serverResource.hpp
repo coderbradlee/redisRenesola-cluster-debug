@@ -522,14 +522,19 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
             string temp_flowno="/flowNo/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
             cout<<left_path<<endl;
-            string type="";
-            string company="";
-            string id_name="{"+type+"_"+company+"_"+"flow_number}:id";
+            std::vector<std::string> one_pair;
+            boost::split(one_pair,left_path , boost::is_any_of("/"));
+
+
+            string company=one_pair[0];
+            string type=one_pair[1];
+            string id_name="{"+company+"_"+type+"_"+"flow_number}:id";
             string incr_command="incr "+id_name;
             string get_command="get "+id_name;
             cout<<id_name<<endl;
             cout<<incr_command<<endl;
             cout<<get_command<<endl;
+            
         //redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
             redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str()));
         freeReplyObject(incr);
