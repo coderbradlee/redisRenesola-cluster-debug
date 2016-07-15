@@ -2740,8 +2740,8 @@ int apollo(HttpServer& server,string url)
             read_json(request->content, pt);
             
             ////cout<<__LINE__<<endl;
-            string type=flow_number_param1;
-            string company=flow_number_param2;
+            string type=pt.get<std::string>(flow_number_param1);
+            string company=pt.get<std::string>(flow_number_param2);
             string id_name="{"+type+"_"+company+"_"+"flow_number}:id";
             string incr_command="incr "+id_name;
             string get_command="get "+id_name;

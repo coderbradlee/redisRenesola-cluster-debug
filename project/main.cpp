@@ -12,8 +12,8 @@ int main() {
 	url=pt.get<std::string>("webserver.url");
 	redisHost=pt.get<std::string>("redis.host");
 	redisPort=pt.get<std::string>("redis.port");
-	flow_number_param1=pt.get<std::string>("flow_number.param1");
-	flow_number_param2=pt.get<std::string>("flow_number.param2");
+	flow_number_param1=pt.get<std::string>("flow_number.param1_name");
+	flow_number_param2=pt.get<std::string>("flow_number.param2_name");
 	//redisPassword=pt.get<std::string>("redis.password");
 	redisPassword="";
 	/*Connection conn(redisHost, redisPort, redisPassword);
