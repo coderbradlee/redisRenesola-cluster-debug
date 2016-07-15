@@ -514,6 +514,58 @@ void t_function_get(HttpServer& server)
           BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
 	}
 }
+void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
+{
+     try 
+        {
+            cout<<request->path<<endl;
+            string type="";
+            string company="";
+            string id_name="{"+type+"_"+company+"_"+"flow_number}:id";
+            string incr_command="incr "+id_name;
+            string get_command="get "+id_name;
+            cout<<id_name<<endl;
+            cout<<incr_command<<endl;
+            cout<<get_command<<endl;
+        //redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
+            redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str()));
+        freeReplyObject(incr);
+        //redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
+        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
+        string value="";
+        //cout<<__LINE__<<endl;
+        if(reply->str!=nullptr)
+        {
+            //cout<<reply->type<<endl;
+          value+=reply->str;
+          //retJson.put<std::string>("flow_number",value);
+        }
+        freeReplyObject(reply);
+
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        string temp="{\"flowNo\":"+value+",\"replyTime\" : \""+now_str+"\"}";
+        // std::stringstream ss;
+        // write_json(ss, retJson);
+        // //在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+        // string temp=ss.str();
+        response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
+        }
+        catch(json_parser_error& e) 
+        {
+            string temp="json error";
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
+            return -1;
+        }
+        catch(exception& e) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
+            return -1;
+        }
+        catch(...) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
+            return -1;
+        }
+}
 void defaultindex(HttpServer& server)
 {
 	try
@@ -524,6 +576,11 @@ void defaultindex(HttpServer& server)
         
 		string path=request->path;
         cout<<path<<endl;
+        string temp="/flowNo/";
+        if(path.compare(0,temp.length(),temp) == 0)
+        {
+            deal_with_flow_number(response,request);
+        }
 		//Replace all ".." with "." (so we can't leave the web-directory)
 		size_t pos;
 		while((pos=path.find(".."))!=string::npos) {
