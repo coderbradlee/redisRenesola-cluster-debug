@@ -2745,6 +2745,9 @@ int apollo(HttpServer& server,string url)
             string id_name="{"+type+"_"+company+"_"+"flow_number}:id";
             string incr_command="incr "+id_name;
             string get_command="get "+id_name;
+            cout<<id_name<<endl;
+            cout<<incr_command<<endl;
+            cout<<get_command<<endl;
         //redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
             redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name, incr_command));
         freeReplyObject(incr);
