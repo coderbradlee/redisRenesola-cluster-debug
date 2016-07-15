@@ -2749,10 +2749,10 @@ int apollo(HttpServer& server,string url)
             cout<<incr_command<<endl;
             cout<<get_command<<endl;
         //redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
-            redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name, incr_command));
+            redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str()));
         freeReplyObject(incr);
         //redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
-        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name, get_command));
+        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
         string value="";
         //cout<<__LINE__<<endl;
         if(reply->str!=nullptr)
