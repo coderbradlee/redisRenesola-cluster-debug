@@ -519,8 +519,8 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
      try 
         {
             cout<<request->path<<endl;
-            string temp="/flowNo/";
-            string left_path=request->path.substr(temp.length(), request->path.length());
+            string temp_flowno="/flowNo/";
+            string left_path=request->path.substr(temp_flowno.length(), request->path.length());
             cout<<left_path<<endl;
             string type="";
             string company="";
@@ -558,15 +558,12 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
         {
             string temp="json error";
             response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
-            return -1;
         }
         catch(exception& e) {
             response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
-            return -1;
         }
         catch(...) {
             response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
-            return -1;
         }
 }
 void defaultindex(HttpServer& server)
