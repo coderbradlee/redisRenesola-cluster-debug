@@ -20,7 +20,7 @@ apolloCacheDaemon: project/main.cpp project/client_http.hpp project/server_http.
 
 apolloCache: project/main.cpp project/client_http.hpp project/server_http.hpp project/serverResource.hpp libredispp.a renesolalog.o
 	g++ $(CXXFLAGS) libredispp.a renesolalog.o project/client_http.hpp project/server_http.hpp project/serverResource.hpp project/main.cpp -oapolloCache
-	rm -f *.o
+#	rm -f *.o
 
 redispp.o: src/redispp.cpp
 	g++ $(smallFlags) src/redispp.cpp
