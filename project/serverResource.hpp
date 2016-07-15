@@ -27,6 +27,7 @@ using namespace boost::posix_time;
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/algorithm/string/split.hpp>
+#include <boost/algorithm/string/classification.hpp>
 //Added for the default_resource example
 #include<fstream>
 using namespace std;
