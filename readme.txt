@@ -1,6 +1,8 @@
 ﻿
 curl -d "{type:\"x\",companyName:\"y\"}" -X GET http://172.18.100.87:8088/flow_number
 
+curl -X GET http://172.18.100.87:8088/flow_number/so/us
+
 
 $cd lib_acl; make
 $cd lib_protocol; make
