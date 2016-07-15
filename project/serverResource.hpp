@@ -519,6 +519,9 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
      try 
         {
             cout<<request->path<<endl;
+            string temp="/flowNo/";
+            string left_path=request->path.substr(temp.length(), request->path.length());
+            cout<<left_path<<endl;
             string type="";
             string company="";
             string id_name="{"+type+"_"+company+"_"+"flow_number}:id";
