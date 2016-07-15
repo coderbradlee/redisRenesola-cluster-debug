@@ -520,7 +520,7 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
      try 
         {
             //BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<;
-            BOOST_LOG(test_lg::get())<<"request: "<<request->method<<" "<<request->path<<;
+            BOOST_LOG(test_lg::get())<<"request: "<<request->method<<" "<<request->path;
             //cout<<request->path<<endl;
             string temp_flowno="/flowNo/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
