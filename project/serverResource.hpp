@@ -2731,7 +2731,7 @@ int apollo(HttpServer& server,string url)
 {
 	try
 	{
-         server.resource["^/flowNo/*$"]["GET"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
+         server.resource["^/flowNo/*+$"]["GET"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
         try 
         {
             cout<<request->path<<endl;
