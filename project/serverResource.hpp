@@ -26,7 +26,7 @@ using namespace boost::posix_time;
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
-
+#include <boost/algorithm/string/split.hpp>
 //Added for the default_resource example
 #include<fstream>
 using namespace std;
@@ -518,7 +518,7 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
 {
      try 
         {
-            cout<<request->path<<endl;
+            //cout<<request->path<<endl;
             string temp_flowno="/flowNo/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
             cout<<left_path<<endl;
@@ -580,7 +580,7 @@ void defaultindex(HttpServer& server)
 		string filename="web";
         
 		string path=request->path;
-        cout<<path<<endl;
+        //cout<<path<<endl;
         string temp="/flowNo/";
         if(path.compare(0,temp.length(),temp) == 0)
         {
