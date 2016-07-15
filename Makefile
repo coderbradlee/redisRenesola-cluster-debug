@@ -2,13 +2,13 @@ all: libredispp.a libredispp.so apolloCache
 
 daemon:libredispp.a libredispp.so apolloCacheDaemon
 
-CXXFLAGS ?= -std=c++11 -g -O3 -Isrc -L/usr/local/lib -L. $(EXTRA_CXXFLAGS) -Werror -lboost_program_options -lboost_filesystem -lboost_coroutine -lboost_system -lboost_thread -lpthread -lboost_context -lboost_date_time -lboost_log_setup -lboost_log -lredispp -lhiredis
+CXXFLAGS ?= -std=c++11 -g -O2 -Isrc -L/usr/local/lib -L. $(EXTRA_CXXFLAGS) -Werror -lboost_program_options -lboost_filesystem -lboost_coroutine -lboost_system -lboost_thread -lpthread -lboost_context -lboost_date_time -lboost_log_setup -lboost_log -lredispp -lhiredis
 # -DREDIS_DISABLE_CLUSTER
 
-CXXFLAGS2 ?= -std=c++11 -g -O3 -Isrc -L/usr/local/lib -L. $(EXTRA_CXXFLAGS) -Werror -lboost_program_options -lboost_filesystem -lboost_coroutine -lboost_system -lboost_thread -lpthread -lboost_context -lboost_date_time -lboost_log_setup -lboost_log -lredispp  -lhiredis -DDAEMON 
+CXXFLAGS2 ?= -std=c++11 -g -O2 -Isrc -L/usr/local/lib -L. $(EXTRA_CXXFLAGS) -Werror -lboost_program_options -lboost_filesystem -lboost_coroutine -lboost_system -lboost_thread -lpthread -lboost_context -lboost_date_time -lboost_log_setup -lboost_log -lredispp  -lhiredis -DDAEMON 
 #-DREDIS_DISABLE_CLUSTER
 
-smallFlags=-std=c++11 -g -O3 -Isrc $(EXTRA_CXXFLAGS) -Werror -c
+smallFlags=-std=c++11 -g -O2 -Isrc $(EXTRA_CXXFLAGS) -Werror -c
 
 
 
