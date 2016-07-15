@@ -1,3 +1,7 @@
+ï»¿
+curl -d "{type:\"x\",companyName:\"y\"}" -X GET http://172.18.100.87:8088/flow_number
+
+
 $cd lib_acl; make
 $cd lib_protocol; make
 $cd lib_acl_cpp; make
@@ -20,59 +24,59 @@ main.o: main.cpp
 
 
 
-¼ÇµÃfreeµôreply
-ÈçºÎ½«µ¥»úµÄredisÊı¾İµ¼Èëµ½redis cluster
+è®°å¾—freeæ‰reply
+å¦‚ä½•å°†å•æœºçš„redisæ•°æ®å¯¼å…¥åˆ°redis cluster
 
 
 
-bugĞŞ¸´
-1¡¢ĞŞ¸´query_sessionÊ±valueÎª¿ÕµÄÇé¿ö
-2¡¢È¥³ıresponseµÄjsonµÄ\n
-3¡¢ĞŞ¸´childrenµÈ×ÓÊ÷Îª¿ÕÊ±·µ»Ø[]
+bugä¿®å¤
+1ã€ä¿®å¤query_sessionæ—¶valueä¸ºç©ºçš„æƒ…å†µ
+2ã€å»é™¤responseçš„jsonçš„\n
+3ã€ä¿®å¤childrenç­‰å­æ ‘ä¸ºç©ºæ—¶è¿”å›[]
 
 
-1¡¢¶¨ÒåºêÈ·¶¨ÊÇ·ñ¿ªÆôDaemonÄ£Ê½ ok
-2¡¢Ìí¼ÓÄ¬ÈÏÒ³ ok
-3¡¢make install
-4¡¢¶¯Ì¬Ìí¼ÓÄ£¿é boost plugin
-5¡¢ÈÕÖ¾É¾³ıÄÜ·ñ×Ô½¨ Ä¿Ç°ÎªÑ­»·ÈÕÖ¾£¬´óĞ¡16m ´ïµ½Ò»¶¨´óĞ¡ºó·Åµ½logsÄ¿Â¼ÏÂÃæÈ¥
-6¡¢ÈÕÖ¾¿ª¹Ø 
-7¡¢Ôö¼ÓÈÕÖ¾µÈ¼¶
+1ã€å®šä¹‰å®ç¡®å®šæ˜¯å¦å¼€å¯Daemonæ¨¡å¼ ok
+2ã€æ·»åŠ é»˜è®¤é¡µ ok
+3ã€make install
+4ã€åŠ¨æ€æ·»åŠ æ¨¡å— boost plugin
+5ã€æ—¥å¿—åˆ é™¤èƒ½å¦è‡ªå»º ç›®å‰ä¸ºå¾ªç¯æ—¥å¿—ï¼Œå¤§å°16m è¾¾åˆ°ä¸€å®šå¤§å°åæ”¾åˆ°logsç›®å½•ä¸‹é¢å»
+6ã€æ—¥å¿—å¼€å…³ 
+7ã€å¢åŠ æ—¥å¿—ç­‰çº§
 
-1¡¢Ö÷±¸
-2¡¢Ö÷·¢ËÍÊı¾İ¸ø±¸»ú,±¸»ú±£´æaofÎÄ¼şper sec
+1ã€ä¸»å¤‡
+2ã€ä¸»å‘é€æ•°æ®ç»™å¤‡æœº,å¤‡æœºä¿å­˜aofæ–‡ä»¶per sec
 
-²ßÂÔ£º
-Á½Ì¨»úÆ÷×öredis cluster£¬Ò»¸ö»úÆ÷ÊÇÁ½masterÊµÀı£¬Ò»¸öslaveÊµÀı£»ÁíÒ»¸ö»úÆ÷ÊÇÁ½¸öslaveÊµÀı£¬Ò»¸ömasterÊµÀı£¬ÅäÖÃaof³Ö¾Ã»¯ÎÄ¼ş£¬Ã¿ÃëÖÓ³Ö¾Ã»¯Ò»´Î¡£
+ç­–ç•¥ï¼š
+ä¸¤å°æœºå™¨åšredis clusterï¼Œä¸€ä¸ªæœºå™¨æ˜¯ä¸¤masterå®ä¾‹ï¼Œä¸€ä¸ªslaveå®ä¾‹ï¼›å¦ä¸€ä¸ªæœºå™¨æ˜¯ä¸¤ä¸ªslaveå®ä¾‹ï¼Œä¸€ä¸ªmasterå®ä¾‹ï¼Œé…ç½®aofæŒä¹…åŒ–æ–‡ä»¶ï¼Œæ¯ç§’é’ŸæŒä¹…åŒ–ä¸€æ¬¡ã€‚
 
-ĞèÒªredis°æ±¾3.0ÒÔÉÏ£¬Ä¿Ç°ÒÑ¾­ÔÚ×Ô¼ºµçÄÔÊµÑé²¿ÊğºÃcluster£¬ºóÃæĞèÒª£º
-1¡¢Éı¼¶²âÊÔÓÃ»úÆ÷µÄredis°æ±¾£¬ÁíÒ»Ì¨ĞÂ×°»úÆ÷ĞèÒª²¿Êğ»·¾³
-2¡¢redis cluster²¿ÊğÍêºó£¬ĞèÒª¸ÄĞ´´úÂë£¬½«Ô­À´µÄĞ´Ò»¸öredisÊµÀıµÄ´úÂë¸ü¸ÄÎªĞ´redis cluster
+éœ€è¦redisç‰ˆæœ¬3.0ä»¥ä¸Šï¼Œç›®å‰å·²ç»åœ¨è‡ªå·±ç”µè„‘å®éªŒéƒ¨ç½²å¥½clusterï¼Œåé¢éœ€è¦ï¼š
+1ã€å‡çº§æµ‹è¯•ç”¨æœºå™¨çš„redisç‰ˆæœ¬ï¼Œå¦ä¸€å°æ–°è£…æœºå™¨éœ€è¦éƒ¨ç½²ç¯å¢ƒ
+2ã€redis clusteréƒ¨ç½²å®Œåï¼Œéœ€è¦æ”¹å†™ä»£ç ï¼Œå°†åŸæ¥çš„å†™ä¸€ä¸ªrediså®ä¾‹çš„ä»£ç æ›´æ”¹ä¸ºå†™redis cluster
 
 
 
 
 reponse log ok
 request log post ok
-request log get Î´È¡µ½Êı¾İ£¬´ı²é
+request log get æœªå–åˆ°æ•°æ®ï¼Œå¾…æŸ¥
 
 
-#Ö÷¿âÅäÖÃ
+#ä¸»åº“é…ç½®
 url_master=jdbc:mysql://172.18.22.202:3306/apollo?Unicode=true&amp;characterEncoding=UTF-8
 username_master=renesola
 password_master=renesola
 
-#´Ó¿âÅäÖÃ
+#ä»åº“é…ç½®
 url_slave=jdbc:mysql://172.18.22.203:3306/apollo?Unicode=true&amp;characterEncoding=UTF-8
 username_slave=renesola
 password_slave=renesola
 
 
 
-1¡¢redis Ö÷´ÓÉèÖÃ
-2¡¢request getÊ±request²»ÄÜĞ´ÈÕÖ¾£¬Ö»ÓĞÇëÇóÈ«²¿Îªpost¼´¿É
-3¡¢redisÉèÖÃ¹ıÆÚÊ±¼äÎÊÌâ£¨ÓÃÓÚsession£©
-4¡¢redisÊı¾İ³Ö¾Ã»¯ÎÊÌâ
+1ã€redis ä¸»ä»è®¾ç½®
+2ã€request getæ—¶requestä¸èƒ½å†™æ—¥å¿—ï¼Œåªæœ‰è¯·æ±‚å…¨éƒ¨ä¸ºpostå³å¯
+3ã€redisè®¾ç½®è¿‡æœŸæ—¶é—´é—®é¢˜ï¼ˆç”¨äºsessionï¼‰
+4ã€redisæ•°æ®æŒä¹…åŒ–é—®é¢˜
 save 900 1
 
 save 300 10
@@ -84,14 +88,14 @@ save 60 10000
 #   after 300 sec (5 min) if at least 10 keys changed
 
 #   after 60 sec if at least 10000 keys changed
-¿ÉÄÜ»áÓĞÊı¾İ¶ªÊ§
+å¯èƒ½ä¼šæœ‰æ•°æ®ä¸¢å¤±
 
 
-5¡¢±¾³ÌĞòÖ÷´Ó
-¿¼ÂÇ¿ÉÒÔÒ»Ì¨Ö÷redis£¬NÌ¨read-onlyµÄslave£¬Ã¿Ì¨ÉÏÃæ¶¼²¿Êğ³ÌĞò
-»òÕßÒ»Ö÷Ò»±¸£¬¶şÖ÷¶ş±¸½Ô¿É£¬Ã¿Ì¨¶¼Ìá¹©³ÌĞò
+5ã€æœ¬ç¨‹åºä¸»ä»
+è€ƒè™‘å¯ä»¥ä¸€å°ä¸»redisï¼ŒNå°read-onlyçš„slaveï¼Œæ¯å°ä¸Šé¢éƒ½éƒ¨ç½²ç¨‹åº
+æˆ–è€…ä¸€ä¸»ä¸€å¤‡ï¼ŒäºŒä¸»äºŒå¤‡çš†å¯ï¼Œæ¯å°éƒ½æä¾›ç¨‹åº
 
-6¡¢Êı¾İ´æ·ÅÊÇ·ñĞèÒª²»Í¬µÄredisÊı¾İ¿â£¬Ä¬ÈÏÊÇselect 0
+6ã€æ•°æ®å­˜æ”¾æ˜¯å¦éœ€è¦ä¸åŒçš„redisæ•°æ®åº“ï¼Œé»˜è®¤æ˜¯select 0
 
 
 
