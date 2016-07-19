@@ -1,7 +1,8 @@
 ﻿
-curl -d "{type:\"x\",companyName:\"y\"}" -X GET http://172.18.100.87:8088/flow_number
 
-curl -X GET http://172.18.100.87:8088/flowNo/us/so
+
+curl -X GET http://172.18.100.87:8088/flowNo/us/so 
+{"flowNo":"7","replyTime" : "2016-07-18 18:01:14"}
 curl -X GET http://172.18.100.87:8088/flowNo/US/SO
 
 $cd lib_acl; make
