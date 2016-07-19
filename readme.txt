@@ -1,6 +1,9 @@
 ﻿
+curl -X POST http://172.18.100.85:8088/apollo -d "{\"operation\":\"QUERY_SESSION\",\"requestData\":[{\"sessionId\":\"J57B5D55ERJHZXDPL1R2\"}],\"requestor\":\"apollo-employee-portal\",\"requestTime\":\"2015-05-25 08:00:00\"}"
 
+curl -X POST http://172.18.100.87:8088/apollo -d "{\"operation\":\"QUERY_SESSION\",\"requestData\":[{\"sessionId\":\"J57B5D55ERJHZXDPL1R2\"}],\"requestor\":\"apollo-employee-portal\",\"requestTime\":\"2015-05-25 08:00:00\"}"
 
+curl -X GET http://172.18.100.85:8088/flowNo/us/so 
 curl -X GET http://172.18.100.87:8088/flowNo/us/so 
 {"flowNo":"7","replyTime" : "2016-07-18 18:01:14"}
 curl -X GET http://172.18.100.87:8088/flowNo/US/SO
