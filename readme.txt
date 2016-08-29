@@ -1,5 +1,5 @@
 ﻿线上部署服务目录及端口更改了下
-curl -X POST http://127.0.0.1:8089/apollo -d "{\"operation\":\"QUERY_SESSION\",\"requestData\":[{\"sessionId\":\"J57B5D55ERJHZXDPL1R2\"}],\"requestor\":\"apollo-employee-portal\",\"requestTime\":\"2015-05-25 08:00:00\"}"
+curl -X POST http://127.0.0.1:8088/apollo -d "{\"operation\":\"QUERY_SESSION\",\"requestData\":[{\"sessionId\":\"J57B5D55ERJHZXDPL1R2\"}],\"requestor\":\"apollo-employee-portal\",\"requestTime\":\"2015-05-25 08:00:00\"}"
 
 curl -X GET http://127.0.0.1:8089/flowNo/us/so 
 
