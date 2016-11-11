@@ -1,4 +1,8 @@
-﻿线上部署服务目录及端口更改了下
+﻿2016.11.11
+curl -X GET http://172.18.100.85:8088/flowNo/us/so
+更改规则：当company是JS时不变，当company不是JS时设置type为定值
+
+线上部署服务目录及端口更改了下
 curl -X POST http://127.0.0.1:8088/apollo -d "{\"operation\":\"QUERY_SESSION\",\"requestData\":[{\"sessionId\":\"J57B5D55ERJHZXDPL1R2\"}],\"requestor\":\"apollo-employee-portal\",\"requestTime\":\"2015-05-25 08:00:00\"}"
 
 curl -X GET http://127.0.0.1:8089/flowNo/us/so 

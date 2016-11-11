@@ -531,6 +531,10 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
 
             string company=one_pair[0];
             string type=one_pair[1];
+            if(company!="JS")
+            {
+                type="OVERSEAS";
+            }
             string id_name="{"+company+"_"+type+"_"+"flow_number}:id";
             string incr_command="incr "+id_name;
             string get_command="get "+id_name;
