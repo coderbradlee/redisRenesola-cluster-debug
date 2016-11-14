@@ -1,12 +1,16 @@
 ﻿2016.11.11
+flow 分支保存有log和redis的data数据
 curl -X GET http://172.18.100.85:8088/flowNo/us/so
 更改规则：当company是JS时不变，当company不是JS时设置type为定值
 
 
   {"flowNo":"7","replyTime" : "2016-07-18 18:01:14"}
-curl -X GET http://127.0.0.1:8088/flowNo/JS/SO
-
+curl -X GET http://127.0.0.1:8088/flowNo/JS/test1
+curl -X GET http://127.0.0.1:8088/flowNo/JS/test2
 curl -X GET http://127.0.0.1:8088/flowNo/US/SO
+curl -X GET http://127.0.0.1:8088/flowNo/US/PI
+curl -X GET http://127.0.0.1:8088/flowNo/JP/SO
+curl -X GET http://127.0.0.1:8088/flowNo/JP/PI
 
 线上部署服务目录及端口更改了下
 curl -X POST http://127.0.0.1:8088/apollo -d "{\"operation\":\"QUERY_SESSION\",\"requestData\":[{\"sessionId\":\"J57B5D55ERJHZXDPL1R2\"}],\"requestor\":\"apollo-employee-portal\",\"requestTime\":\"2015-05-25 08:00:00\"}"
