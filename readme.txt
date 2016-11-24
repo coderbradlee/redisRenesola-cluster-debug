@@ -1,4 +1,10 @@
-﻿2016.11.11
+﻿2016.11.24
+eu库的先用新规则，其他的还是老规则不变
+即：
+1、eu的几个公司，UK,ZA,FR,IT,DE,TR,RU，运用新规则
+2、其他的用老规则
+
+2016.11.11
 flow 分支保存有log和redis的data数据
 curl -X GET http://172.18.100.85:8088/flowNo/us/so
 更改规则：当company是JS时不变，当company不是JS时设置type为定值

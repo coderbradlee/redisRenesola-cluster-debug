@@ -43,7 +43,7 @@ string redisPassword;
 string url;
 string flow_number_param1;
 string flow_number_param2;
-///定义redis库
+///露篓脪氓redis驴芒
 #define KV_SYS_PARAMS 0
 #define KV_MF 1
 #define KV_SESSION 2
@@ -51,35 +51,35 @@ string flow_number_param2;
 #define KV_SHOPPING_CART 4
 #define KV_OBJ_SNAPSHOT 5
 #define KV_OPERATION_LOG 6
-// response error code define -8001 ~ -9000 隔-10或-5
-//JSON_READ_OR_WRITE_ERROR(-8010, "json read or write error", "json 格式问题")
+// response error code define -8001 ~ -9000 赂么-10禄貌-5
+//JSON_READ_OR_WRITE_ERROR(-8010, "json read or write error", "json 赂帽脢陆脦脢脤芒")
 #define JSON_READ_OR_WRITE_ERROR -8010
-//CREATE_SESSION_UNKNOWN_ERROR(-8020, "create session unknown error", "创建session时未知的错误")
+//CREATE_SESSION_UNKNOWN_ERROR(-8020, "create session unknown error", "麓麓陆篓session脢卤脦麓脰陋碌脛麓铆脦贸")
 #define CREATE_SESSION_UNKNOWN_ERROR -8020
-//CREATE_SESSION_KEY_EXIST(-8025, "key already exist when create session", "创建session时key已经存在")
+//CREATE_SESSION_KEY_EXIST(-8025, "key already exist when create session", "麓麓陆篓session脢卤key脪脩戮颅麓忙脭脷")
 #define CREATE_SESSION_KEY_EXIST -8025
-//ADD_USERID_UNDER_SESSION_UNKNOWN_ERROR(-8030, "add userid unknown error", "增加userid时未知的错误")
+//ADD_USERID_UNDER_SESSION_UNKNOWN_ERROR(-8030, "add userid unknown error", "脭枚录脫userid脢卤脦麓脰陋碌脛麓铆脦贸")
 #define ADD_USERID_UNDER_SESSION_UNKNOWN_ERROR -8030
-//ADD_USERID_KEY_NOT_EXIST(-8035, "key does not exist when add userid", "增加userid时key不存在")
+//ADD_USERID_KEY_NOT_EXIST(-8035, "key does not exist when add userid", "脭枚录脫userid脢卤key虏禄麓忙脭脷")
 #define ADD_USERID_KEY_NOT_EXIST -8035
-//DELETE_SESSION_UNKNOWN_ERROR(-8040, "del session unknown error", "删除session时未知的错误")
+//DELETE_SESSION_UNKNOWN_ERROR(-8040, "del session unknown error", "脡戮鲁媒session脢卤脦麓脰陋碌脛麓铆脦贸")
 #define DELETE_SESSION_UNKNOWN_ERROR -8040
-//DELETE_SESSION_KEY_NOT_EXIST(-8045, "key does not exist when del session", "删除session时key不存在")
+//DELETE_SESSION_KEY_NOT_EXIST(-8045, "key does not exist when del session", "脡戮鲁媒session脢卤key虏禄麓忙脭脷")
 #define DELETE_SESSION_KEY_NOT_EXIST -8045
-//QUERY_SESSION_UNKNOWN_ERROR(-8050, "unknown error when query session ", "查询session时未知的错误")
+//QUERY_SESSION_UNKNOWN_ERROR(-8050, "unknown error when query session ", "虏茅脩炉session脢卤脦麓脰陋碌脛麓铆脦贸")
 #define QUERY_SESSION_UNKNOWN_ERROR -8050
-//QUERY_SESSION_KEY_NOT_EXIST(-8055, "key does not exist when query session", "查询session时key不存在")
+//QUERY_SESSION_KEY_NOT_EXIST(-8055, "key does not exist when query session", "虏茅脩炉session脢卤key虏禄麓忙脭脷")
 #define QUERY_SESSION_KEY_NOT_EXIST -8055
-//UPDATE_SESSION_DEADLINE_UNKNOWN_ERROR(-8060, "update session unknown error", "更新session时未知的错误")
+//UPDATE_SESSION_DEADLINE_UNKNOWN_ERROR(-8060, "update session unknown error", "赂眉脨脗session脢卤脦麓脰陋碌脛麓铆脦贸")
 #define UPDATE_SESSION_DEADLINE_UNKNOWN_ERROR -8060
-//UPDATE_SESSION_DEADLINE_KEY_NOT_EXIST(-8065, "key does not exist when update session", "更新session时key不存在")
+//UPDATE_SESSION_DEADLINE_KEY_NOT_EXIST(-8065, "key does not exist when update session", "赂眉脨脗session脢卤key虏禄麓忙脭脷")
 #define UPDATE_SESSION_DEADLINE_KEY_NOT_EXIST -8065
 //*********************************************************
-//BATCH_CREATE_AREAS_KEY_EXIST(-8070, "key already exists when batch create areas", "批量增加地区key时key已经存在")
+//BATCH_CREATE_AREAS_KEY_EXIST(-8070, "key already exists when batch create areas", "脜煤脕驴脭枚录脫碌脴脟酶key脢卤key脪脩戮颅麓忙脭脷")
 #define BATCH_CREATE_AREAS_KEY_EXIST -8070
-//BATCH_CREATE_AREAS_UNKNOWN_ERROR(-8080, "unknown error when batch create areas", "批量增加地区key时未知错误")
+//BATCH_CREATE_AREAS_UNKNOWN_ERROR(-8080, "unknown error when batch create areas", "脜煤脕驴脭枚录脫碌脴脟酶key脢卤脦麓脰陋麓铆脦贸")
 #define BATCH_CREATE_AREAS_UNKNOWN_ERROR -8080
-//UNKNOWN_ERROR(-8085, "unknown error", "未知错误")
+//UNKNOWN_ERROR(-8085, "unknown error", "脦麓脰陋麓铆脦贸")
 #define UNKNOWN_ERROR -8085
 
 //*********************************************************
@@ -271,7 +271,7 @@ typedef Cluster<redisContext, ThreadedPool<redisContext> > ThreadPoolCluster;
 volatile int cnt = 0;
 std::mutex lockRedis;
 
-//set global variable value ThreadPoolCluster::ptr_t cluster_p;，set value through timer
+//set global variable value ThreadPoolCluster::ptr_t cluster_p;拢卢set value through timer
 ThreadPoolCluster::ptr_t cluster_p;
 //std::mutex lockRedis;
 void commandThread( ThreadPoolCluster::ptr_t cluster_p )
@@ -347,7 +347,7 @@ void t_area(HttpServer& server)
 			std::cout<<"dr:"<<dr<<endl;
 			std::cout<<"data_version:"<<data_version<<endl;*/
 
-			//********重新拼接json包并写日志和redis**********************8
+			//********脰脴脨脗脝麓陆脫json掳眉虏垄脨麓脠脮脰戮潞脥redis**********************8
 			//ptree pt;
 			//pt.put ("foo", "bar");
 			std::ostringstream buf; 
@@ -444,7 +444,7 @@ void t_function(HttpServer& server)
 			string note=pt.get<string>("note");
 			int dr=pt.get<int>("dr");
 			int data_version=pt.get<int>("data_version");
-			//********重新拼接json包并写日志和redis**********************8
+			//********脰脴脨脗脝麓陆脫json掳眉虏垄脨麓脠脮脰戮潞脥redis**********************8
 			//ptree pt;
 			//pt.put ("foo", "bar");
 			std::ostringstream buf; 
@@ -531,10 +531,15 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
 
             string company=one_pair[0];
             string type=one_pair[1];
-            if(company!="JS")
+            //UK,ZA,FR,IT,DE,TR,RU锛岃繖浜涘厛鐢ㄦ柊瑙勫垯
+            if((company=="UK")||(company=="ZA")||(company=="FR")||(company=="IT")||(company=="DE")||(company=="TR")||(company=="RU"))
             {
                 type="OVERSEAS";
             }
+            // if(company!="JS")
+            // {
+            //     type="OVERSEAS";
+            // }
             string id_name="{"+company+"_"+type+"_"+"flow_number}:id";
             string incr_command="incr "+id_name;
             string get_command="get "+id_name;
@@ -565,7 +570,7 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
         cout<<temp<<":"<<__FILE__<<""<<__LINE__<<endl;
         // std::stringstream ss;
         // write_json(ss, retJson);
-        // //在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+        // //脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
         // string temp=ss.str();
         response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
         }
@@ -652,7 +657,7 @@ string OVER_WRITE_T_SYS_PARAMETER(ptree& pt)
 {
 	try
 	{
-	//在这里解析json并保存到redis里面，以dataType:parameter_id,表名:pk，实际为对象名:pk
+	//脭脷脮芒脌茂陆芒脦枚json虏垄卤拢麓忙碌陆redis脌茂脙忙拢卢脪脭dataType:parameter_id,卤铆脙没:pk拢卢脢碌录脢脦陋露脭脧贸脙没:pk
 						
 	ptree pChild = pt.get_child("requestData");
 	Connection conn(redisHost, redisPort, redisPassword);
@@ -687,7 +692,7 @@ string OVER_WRITE_T_SYS_PARAMETER(ptree& pt)
 
 	
 	//	{
-		//   "operation":"OVER_WRITE", /*覆盖写*/
+		//   "operation":"OVER_WRITE", /*赂虏赂脟脨麓*/
 		//   "dataType":"T_SYS_PARAMETER",
 		//   "requestData":[{
 		//      "parameter_id":"12345678901234567890",
@@ -695,9 +700,9 @@ string OVER_WRITE_T_SYS_PARAMETER(ptree& pt)
 		//   "name":"MAX_RETRY",
 		//   "code":"MAX_RETRY",
 		//   "value":3,
-		//   "description":"最大重试次数",
+		//   "description":"脳卯麓贸脰脴脢脭麓脦脢媒",
 		//   "status":0,
-		//   "note":"及时生效",
+		//   "note":"录掳脢卤脡煤脨搂",
 		//   "dr":0,
 		//   "data_version":1
 		//},{
@@ -706,9 +711,9 @@ string OVER_WRITE_T_SYS_PARAMETER(ptree& pt)
 		//   "name":"CONNECTION_TIMEOUT",
 		//   "code":"CONNECTION_TIMEOUT",
 		//   "value":5,
-		//   "description":"socket连接超时时长",
+		//   "description":"socket脕卢陆脫鲁卢脢卤脢卤鲁陇",
 		//   "status":0,
-		//   "note":"及时生效",
+		//   "note":"录掳脢卤脡煤脨搂",
 		//   "dr":0,
 		//   "data_version":1
 		//}],
@@ -783,7 +788,7 @@ string CREATE_SESSION_HTTP_SESSION(const ptree& pt)
 		retJson.put<std::string>("message","session write to cache[KV_SESSION] successfully");
 		retJson.put<std::string>("replyData",key);
 		retJson.put<std::string>("replier","apollo-cache");
-		//获取时间
+		//禄帽脠隆脢卤录盲
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		retJson.put<std::string>("replyTime",now_str);
@@ -1396,7 +1401,7 @@ string LIST_AREAS_BY_KEYS(const ptree& pt)
 		std::stringstream ss;
 		write_json(ss, retJson);
 		
-		//在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+		//脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
 		string temp=ss.str();
 		temp=replace_all_distinct(temp,"\"children\": \"\"","\"children\":[]");
 		temp=replace_all_distinct(temp,"\"childrens\": \"\"","\"childrens\":[]");
@@ -1460,12 +1465,12 @@ string LIST_AREAS_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message","LIST_AREAS all from cache[KV_MF] successfully");
 
-		//获取所有key
+		//禄帽脠隆脣霉脫脨key
 		string tempkey="{KV_MF}:area:*";
 		//cout<<tempkey<<endl;
 		redisReply* reply;
 		HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"exists %s", tempkey.c_str());
-		//执行此命令可以将node转向到含有此key的node
+		//脰麓脨脨麓脣脙眉脕卯驴脡脪脭陆芦node脳陋脧貌碌陆潞卢脫脨麓脣key碌脛node
 		
 		reply = static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"keys %s", tempkey.c_str()));
 		//std::string tempkey;
@@ -1498,7 +1503,7 @@ string LIST_AREAS_BY_KEYWORDS(const ptree& pt)
 		retJson.put<std::string>("replyTime",now_str);
 		std::stringstream ss;
 		write_json(ss, retJson);
-		//在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+		//脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
 		string temp=ss.str();
 		//temp=temp.replace(temp.find("\"children\":\"\""), 1, "\"children\":[]");
 		temp=replace_all_distinct(temp,"\"children\": \"\"","\"children\":[]");
@@ -1648,12 +1653,12 @@ string DELETE_AREAS_BY_KEYWORDS(const ptree& pt)
 		retJson.put<std::string>("message","DELETE_AREAS all from cache[KV_MF] successfully");
 
 		std::string keyall="";
-		//获取所有key
+		//禄帽脠隆脣霉脫脨key
 		string tempkey="{KV_MF}:area:*";
 		//cout<<tempkey<<endl;
 		redisReply* reply;
 		HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"exists %s", tempkey.c_str());
-		//执行此命令可以将node转向到含有此key的node
+		//脰麓脨脨麓脣脙眉脕卯驴脡脪脭陆芦node脳陋脧貌碌陆潞卢脫脨麓脣key碌脛node
 		
 		reply = static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"keys %s", tempkey.c_str()));
 		//std::string tempkey;
@@ -1865,7 +1870,7 @@ string LIST_LANGUAGE_BY_KEYS(const ptree& pt)
 		retJson.put<std::string>("replyTime",now_str);
 		std::stringstream ss;
 		write_json(ss, retJson);
-		//在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+		//脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
 		string temp=ss.str();
 		//temp=temp.replace(temp.find("\"children\":\"\""), 1, "\"children\":[]");
 		temp=replace_all_distinct(temp,"\"children\": \"\"","\"children\":[]");
@@ -1924,12 +1929,12 @@ string LIST_LANGUAGE_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message","LIST_LANGUAGE all from cache[KV_MF] successfully");
 
-		//获取所有key
+		//禄帽脠隆脣霉脫脨key
 		string tempkey="{KV_MF}:language:*";
 		//cout<<tempkey<<endl;
 		redisReply* reply;
 		HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"exists %s", tempkey.c_str());
-		//执行此命令可以将node转向到含有此key的node
+		//脰麓脨脨麓脣脙眉脕卯驴脡脪脭陆芦node脳陋脧貌碌陆潞卢脫脨麓脣key碌脛node
 		////cout<<__LINE__<<":"<<reply->type<<endl;
 		////cout<<__LINE__<<":"<<reply->integer<<endl;
 
@@ -1964,7 +1969,7 @@ string LIST_LANGUAGE_BY_KEYWORDS(const ptree& pt)
 		retJson.put<std::string>("replyTime",now_str);
 		std::stringstream ss;
 		write_json(ss, retJson);
-		//在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+		//脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
 		string temp=ss.str();
 		//temp=temp.replace(temp.find("\"children\":\"\""), 1, "\"children\":[]");
 		temp=replace_all_distinct(temp,"\"children\": \"\"","\"children\":[]");
@@ -2153,7 +2158,7 @@ string LIST_SHIPVIA_BY_KEYS(const ptree& pt)
 		retJson.put<std::string>("replyTime",now_str);
 		std::stringstream ss;
 		write_json(ss, retJson);
-		//在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+		//脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
 		string temp=ss.str();
 		//temp=temp.replace(temp.find("\"children\":\"\""), 1, "\"children\":[]");
 		temp=replace_all_distinct(temp,"\"children\": \"\"","\"children\":[]");
@@ -2212,12 +2217,12 @@ string LIST_SHIPVIA_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message","LIST_SHIPVIA all from cache[KV_MF] successfully");
 
-		//获取所有key
+		//禄帽脠隆脣霉脫脨key
 		string tempkey="{KV_MF}:ship:*";
 		//cout<<tempkey<<endl;
 		redisReply* reply;
 		HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"exists %s", tempkey.c_str());
-		//执行此命令可以将node转向到含有此key的node
+		//脰麓脨脨麓脣脙眉脕卯驴脡脪脭陆芦node脳陋脧貌碌陆潞卢脫脨麓脣key碌脛node
 		////cout<<__LINE__<<":"<<reply->type<<endl;
 		////cout<<__LINE__<<":"<<reply->integer<<endl;
 
@@ -2252,7 +2257,7 @@ string LIST_SHIPVIA_BY_KEYWORDS(const ptree& pt)
 		retJson.put<std::string>("replyTime",now_str);
 		std::stringstream ss;
 		write_json(ss, retJson);
-		//在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+		//脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
 		string temp=ss.str();
 		//temp=temp.replace(temp.find("\"children\":\"\""), 1, "\"children\":[]");
 		temp=replace_all_distinct(temp,"\"children\": \"\"","\"children\":[]");
@@ -2442,7 +2447,7 @@ string GENERAL_LIST_BY_KEYS(const ptree& pt,string keyTitle,string operation)
 		retJson.put<std::string>("replyTime",now_str);
 		std::stringstream ss;
 		write_json(ss, retJson);
-		//在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+		//脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
 		string temp=ss.str();
 		//temp=temp.replace(temp.find("\"children\":\"\""), 1, "\"children\":[]");
 		temp=replace_all_distinct(temp,"\"children\": \"\"","\"children\":[]");
@@ -2507,12 +2512,12 @@ string GENERAL_LIST_BY_KEYWORDS(const ptree& pt,string keyTitle,string operation
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message",operation+" all from cache[KV_MF] successfully");
 
-		//获取所有key
+		//禄帽脠隆脣霉脫脨key
 		string tempkey=keyTitle+":*";
 		//cout<<tempkey<<endl;
 		redisReply* reply;
 		HiredisCommand<ThreadPoolCluster>::Command( cluster_p,tempkey.c_str(),"exists %s", tempkey.c_str());
-		//执行此命令可以将node转向到含有此key的node
+		//脰麓脨脨麓脣脙眉脕卯驴脡脪脭陆芦node脳陋脧貌碌陆潞卢脫脨麓脣key碌脛node
 		////cout<<__LINE__<<":"<<reply->type<<endl;
 		////cout<<__LINE__<<":"<<reply->integer<<endl;
 
@@ -2547,7 +2552,7 @@ string GENERAL_LIST_BY_KEYWORDS(const ptree& pt,string keyTitle,string operation
 		retJson.put<std::string>("replyTime",now_str);
 		std::stringstream ss;
 		write_json(ss, retJson);
-		//在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+		//脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
 		string temp=ss.str();
 		//temp=temp.replace(temp.find("\"children\":\"\""), 1, "\"children\":[]");
 		temp=replace_all_distinct(temp,"\"children\": \"\"","\"children\":[]");
@@ -2744,7 +2749,7 @@ string GET_USER_ROLE(const ptree& pt,string keyTitle,string operation)
 		retJson.put<std::string>("replyTime",now_str);
 		std::stringstream ss;
 		write_json(ss, retJson);
-		//在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+		//脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
 		string temp=ss.str();
 		//temp=temp.replace(temp.find("\"children\":\"\""), 1, "\"children\":[]");
 		temp=replace_all_distinct(temp,"\"children\": \"\"","\"children\":[]");
@@ -2837,7 +2842,7 @@ int apollo(HttpServer& server,string url)
         string temp="{\"flowNo\":"+value+",\"replyTime\" : \""+now_str+"\"}";
         // std::stringstream ss;
         // write_json(ss, retJson);
-        // //在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+        // //脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
         // string temp=ss.str();
         response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
         }
@@ -2891,7 +2896,7 @@ int apollo(HttpServer& server,string url)
     //     string temp="{\"flow_number\":"+value+"}";
     //     // std::stringstream ss;
     //     // write_json(ss, retJson);
-    //     // //在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
+    //     // //脭脷脮芒脌茂脜脨露脧脌茂脙忙碌脛children录掳childrens碌脛脰碌拢卢脠莽鹿没脦陋驴脮拢卢脡猫脰脙脦陋驴脮脢媒脳茅,脫脙replace
     //     // string temp=ss.str();
     //     response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
     //     }
