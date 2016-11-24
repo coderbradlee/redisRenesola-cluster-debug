@@ -4,6 +4,22 @@ eu库的先用新规则，其他的还是老规则不变
 1、eu的几个公司，UK,ZA,FR,IT,DE,TR,RU，运用新规则
 2、其他的用老规则
 
+curl -X GET http://127.0.0.1:8089/flowNo/UK/SO
+curl -X GET http://127.0.0.1:8089/flowNo/ZA/SO
+curl -X GET http://127.0.0.1:8089/flowNo/FR/SO
+curl -X GET http://127.0.0.1:8089/flowNo/IT/SO
+curl -X GET http://127.0.0.1:8089/flowNo/DE/SO
+curl -X GET http://127.0.0.1:8089/flowNo/TR/SO
+curl -X GET http://127.0.0.1:8089/flowNo/RU/SO
+
+curl -X GET http://127.0.0.1:8089/flowNo/UK/PI
+curl -X GET http://127.0.0.1:8089/flowNo/ZA/PI
+curl -X GET http://127.0.0.1:8089/flowNo/FR/PI
+curl -X GET http://127.0.0.1:8089/flowNo/IT/PI
+curl -X GET http://127.0.0.1:8089/flowNo/DE/PI
+curl -X GET http://127.0.0.1:8089/flowNo/TR/PI
+curl -X GET http://127.0.0.1:8089/flowNo/RU/PI
+
 2016.11.11
 flow 分支保存有log和redis的data数据
 curl -X GET http://172.18.100.85:8088/flowNo/us/so
