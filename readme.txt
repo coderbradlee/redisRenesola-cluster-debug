@@ -1,4 +1,17 @@
-﻿2016.11.24
+﻿2016.12.01
+os更新新规则
+PA	ReneSola Panama
+US	ReneSola America
+CA	ReneSola Canada
+MX	ReneSola Mexico
+BR
+set {PA_OVERSEAS_flow_number}:id 20
+set {US_OVERSEAS_flow_number}:id 20
+set {CA_OVERSEAS_flow_number}:id 20
+set {MX_OVERSEAS_flow_number}:id 20
+set {BR_OVERSEAS_flow_number}:id 20
+
+2016.11.24
 eu库的先用新规则，其他的还是老规则不变
 即：
 1、eu的几个公司，UK,ZA,FR,IT,DE,TR,RU，运用新规则

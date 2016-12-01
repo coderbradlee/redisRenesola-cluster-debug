@@ -532,7 +532,7 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
             string company=one_pair[0];
             string type=one_pair[1];
             //UK,ZA,FR,IT,DE,TR,RU，这些先用新规则
-            if((company=="UK")||(company=="ZA")||(company=="FR")||(company=="IT")||(company=="DE")||(company=="TR")||(company=="RU"))
+            if((company=="UK")||(company=="ZA")||(company=="FR")||(company=="IT")||(company=="DE")||(company=="TR")||(company=="RU")||(company=="PA")||(company=="US")||(company=="CA")||(company=="MX")||(company=="BR"))
             {
                 type="OVERSEAS";
             }
