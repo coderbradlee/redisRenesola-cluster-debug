@@ -10,6 +10,18 @@ set {US_OVERSEAS_flow_number}:id 20
 set {CA_OVERSEAS_flow_number}:id 20
 set {MX_OVERSEAS_flow_number}:id 20
 set {BR_OVERSEAS_flow_number}:id 20
+测试：
+curl -X GET http://127.0.0.1:8089/flowNo/PA/SO
+curl -X GET http://127.0.0.1:8089/flowNo/CA/SO
+curl -X GET http://127.0.0.1:8089/flowNo/US/SO
+curl -X GET http://127.0.0.1:8089/flowNo/MX/SO
+curl -X GET http://127.0.0.1:8089/flowNo/BR/SO
+
+curl -X GET http://127.0.0.1:8089/flowNo/US/PI
+curl -X GET http://127.0.0.1:8089/flowNo/CA/PI
+
+curl -X GET http://127.0.0.1:8088/flowNo/US/PI
+curl -X GET http://127.0.0.1:8088/flowNo/CA/PI
 
 2016.11.24
 eu库的先用新规则，其他的还是老规则不变
