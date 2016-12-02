@@ -1,4 +1,8 @@
-﻿2016.12.01
+﻿2016.12.02
+as更新新规则
+set {JP_OVERSEAS_flow_number}:id 100
+set {TH_OVERSEAS_flow_number}:id 100
+2016.12.01
 os更新新规则
 PA	ReneSola Panama
 US	ReneSola America
