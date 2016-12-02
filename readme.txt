@@ -2,6 +2,14 @@
 as更新新规则
 set {JP_OVERSEAS_flow_number}:id 100
 set {TH_OVERSEAS_flow_number}:id 100
+
+curl -X GET http://127.0.0.1:8088/flowNo/JP/SO
+curl -X GET http://127.0.0.1:8088/flowNo/JP/xx
+
+curl -X GET http://127.0.0.1:8088/flowNo/TH/SO
+curl -X GET http://127.0.0.1:8088/flowNo/TH/xx
+
+
 2016.12.01
 os更新新规则
 PA	ReneSola Panama
