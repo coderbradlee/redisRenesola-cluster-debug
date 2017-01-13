@@ -593,6 +593,7 @@ void get_with_shipping_cost(HttpServer::Response& response, std::shared_ptr<Http
             //BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<;
             //BOOST_LOG(test_lg::get())<<"request: "<<request->method<<" "<<request->path;initsink->flush();
             //cout<<request->path<<endl;
+            cout<<__FILE__<<":"<<__LINE__<<endl;
             string temp_flowno="/ShippingCost/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
             cout<<left_path<<endl;
@@ -665,6 +666,7 @@ void post_with_shipping_cost(HttpServer::Response& response, std::shared_ptr<Htt
             //BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<;
             //BOOST_LOG(test_lg::get())<<"request: "<<request->method<<" "<<request->path;initsink->flush();
             //cout<<request->path<<endl;
+            cout<<__FILE__<<":"<<__LINE__<<endl;
             string temp_flowno="/ShippingCost/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
             cout<<left_path<<endl;
@@ -743,6 +745,7 @@ void defaultindex(HttpServer& server)
         string temp2="/ShippingCost/";
         if(path.compare(0,temp2.length(),temp2) == 0)
         {
+            cout<<__FILE__<<":"<<__LINE__<<endl;
             get_with_shipping_cost(response,request);
             return;
         }
