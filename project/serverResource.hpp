@@ -586,6 +586,144 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
             response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
         }
 }
+void get_with_shipping_cost(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
+{
+     try 
+        {
+            //BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<;
+            //BOOST_LOG(test_lg::get())<<"request: "<<request->method<<" "<<request->path;initsink->flush();
+            //cout<<request->path<<endl;
+            string temp_flowno="/ShippingCost/";
+            string left_path=request->path.substr(temp_flowno.length(), request->path.length());
+            cout<<left_path<<endl;
+            std::vector<std::string> one_pair;
+            boost::split(one_pair,left_path , boost::is_any_of("/"));
+
+
+            string company=one_pair[0];
+            string type=one_pair[1];
+            //UK,ZA,FR,IT,DE,TR,RU，这些先用新规则
+            // if((company=="UK")||(company=="ZA")||(company=="FR")||(company=="IT")||(company=="DE")||(company=="TR")||(company=="RU")||(company=="PA")||(company=="US")||(company=="CA")||(company=="MX")||(company=="BR")||(company=="JP")||(company=="TH"))
+            // {
+            //     type="OVERSEAS";
+            // }
+            // if(company!="JS")
+            // {
+            //     type="OVERSEAS";
+            // }
+            string id_name="{"+company+"_"+type+"_"+"ShippingCost}:id";
+            //string incr_command="set "+id_name+" 1";
+            string get_command="get "+id_name;
+            cout<<id_name<<endl;
+            //cout<<incr_command<<endl;
+            cout<<get_command<<endl;
+            
+        //redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
+           // redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str()));
+        //freeReplyObject(incr);
+        //redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
+        cout<<__FILE__<<""<<__LINE__<<endl;
+        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
+        string value="0";
+        //cout<<__LINE__<<endl;
+        if(reply->str!=nullptr)
+        {
+            //cout<<reply->type<<endl;
+          value=reply->str;
+          //retJson.put<std::string>("flow_number",value);
+        }
+
+        freeReplyObject(reply);
+        cout<<value<<":"<<__FILE__<<""<<__LINE__<<endl;
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        //string temp="{\"flowNo\":\""+value+"\",\"replyTime\" : \""+now_str+"\"}";
+        string temp="{\"ShippingCost-"+company+"-"+type+"\":"+value+"}";
+        cout<<temp<<":"<<__FILE__<<""<<__LINE__<<endl;
+        // std::stringstream ss;
+        // write_json(ss, retJson);
+        // //ÔÚÕâÀïÅÐ¶ÏÀïÃæµÄchildren¼°childrensµÄÖµ£¬Èç¹ûÎª¿Õ£¬ÉèÖÃÎª¿ÕÊý×é,ÓÃreplace
+        // string temp=ss.str();
+        response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
+        }
+        catch(json_parser_error& e) 
+        {
+            string temp="json error";
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
+        }
+        catch(exception& e) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
+        }
+        catch(...) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
+        }
+}
+void post_with_shipping_cost(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
+{
+     try 
+        {
+            //BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<;
+            //BOOST_LOG(test_lg::get())<<"request: "<<request->method<<" "<<request->path;initsink->flush();
+            //cout<<request->path<<endl;
+            string temp_flowno="/ShippingCost/";
+            string left_path=request->path.substr(temp_flowno.length(), request->path.length());
+            cout<<left_path<<endl;
+            std::vector<std::string> one_pair;
+            boost::split(one_pair,left_path , boost::is_any_of("/"));
+
+
+            string company=one_pair[0];
+            string type=one_pair[1];
+            //UK,ZA,FR,IT,DE,TR,RU，这些先用新规则
+            // if((company=="UK")||(company=="ZA")||(company=="FR")||(company=="IT")||(company=="DE")||(company=="TR")||(company=="RU")||(company=="PA")||(company=="US")||(company=="CA")||(company=="MX")||(company=="BR")||(company=="JP")||(company=="TH"))
+            // {
+            //     type="OVERSEAS";
+            // }
+            // if(company!="JS")
+            // {
+            //     type="OVERSEAS";
+            // }
+            string id_name="{"+company+"_"+type+"_"+"ShippingCost}:id";
+            //string incr_command="set "+id_name+" 1";
+            string get_command="set "+id_name+" 1";
+            cout<<id_name<<endl;
+            //cout<<incr_command<<endl;
+            cout<<get_command<<endl;
+        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
+        string value="0";
+        //cout<<__LINE__<<endl;
+        if(reply->str!=nullptr)
+        {
+            //cout<<reply->type<<endl;
+          value=reply->str;
+          //retJson.put<std::string>("flow_number",value);
+        }
+
+        freeReplyObject(reply);
+        cout<<value<<":"<<__FILE__<<""<<__LINE__<<endl;
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        //string temp="{\"flowNo\":\""+value+"\",\"replyTime\" : \""+now_str+"\"}";
+        string temp="{\"ShippingCost-"+company+"-"+type+"\":1"+value+"}";
+        cout<<temp<<":"<<__FILE__<<""<<__LINE__<<endl;
+        // std::stringstream ss;
+        // write_json(ss, retJson);
+        // //ÔÚÕâÀïÅÐ¶ÏÀïÃæµÄchildren¼°childrensµÄÖµ£¬Èç¹ûÎª¿Õ£¬ÉèÖÃÎª¿ÕÊý×é,ÓÃreplace
+        // string temp=ss.str();
+        response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
+        }
+        catch(json_parser_error& e) 
+        {
+            string temp="json error";
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
+        }
+        catch(exception& e) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
+        }
+        catch(...) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
+        }
+}
 void defaultindex(HttpServer& server)
 {
 	try
@@ -600,6 +738,12 @@ void defaultindex(HttpServer& server)
         if(path.compare(0,temp.length(),temp) == 0)
         {
             deal_with_flow_number(response,request);
+            return;
+        }
+        string temp2="/ShippingCost/";
+        if(path.compare(0,temp2.length(),temp2) == 0)
+        {
+            get_with_shipping_cost(response,request);
             return;
         }
 		//Replace all ".." with "." (so we can't leave the web-directory)
@@ -646,7 +790,19 @@ void defaultindex(HttpServer& server)
 			response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << content.length() << "\r\n\r\n" << content;
 		}
 	};
-
+        server.default_resource["POST"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) 
+        {
+            string filename="web";
+            
+            string path=request->path;
+            
+            string temp2="/ShippingCost/";
+            if(path.compare(0,temp2.length(),temp2) == 0)
+            {
+                post_with_shipping_cost(response,request);
+                return;
+            }  
+        };
 	}
 	catch(exception& e) 
 	{

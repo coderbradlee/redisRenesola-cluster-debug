@@ -1,4 +1,31 @@
-﻿2016.12.02
+﻿2017.01.13
+POST，RESTful
+/ShippingCost/{companyCode}/{SO id}
+
+在全局Cache中设置 如下 Key/Value 对 - 
+key: "ShippingCost-{companyCode}-{SO id}"
+value: 1 
+------------------------------------------------------
+操作：读取运费标志位
+GET，RESTful
+/ShippingCost/{companyCode}/{SO id}
+
+如 key:value 已存在，返回：
+{
+   "ShippingCost-{companyCode}-{SO id}": 1 //已设置“运费”标志位
+}
+
+如 key:value 不存在，返回：
+{
+   "ShippingCost-{companyCode}-{SO id}": 0 //未设置“运费”标志位
+}
+
+curl -X GET http://127.0.0.1:8088/ShippingCost/PA/123
+curl -X POST http://127.0.0.1:8088/ShippingCost/PA/123
+curl -X GET http://127.0.0.1:8088/ShippingCost/PA/123
+
+
+2016.12.02
 as更新新规则
 set {JP_OVERSEAS_flow_number}:id 100
 set {TH_OVERSEAS_flow_number}:id 100
