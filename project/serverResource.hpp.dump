@@ -706,7 +706,8 @@ void post_with_shipping_cost(HttpServer::Response& response, std::shared_ptr<Htt
         ptime now = second_clock::local_time();  
         string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
         //string temp="{\"flowNo\":\""+value+"\",\"replyTime\" : \""+now_str+"\"}";
-        string temp="{\"ShippingCost-"+company+"-"+type+"\":1"+value+"}";
+        // string temp="{\"ShippingCost-"+company+"-"+type+"\":1"+value+"}";
+        string temp="{\"errorCode\":\"200\"}";
         cout<<temp<<":"<<__FILE__<<""<<__LINE__<<endl;
         // std::stringstream ss;
         // write_json(ss, retJson);
