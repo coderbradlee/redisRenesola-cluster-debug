@@ -1,4 +1,7 @@
-﻿2017.01.13
+﻿2017.01.22
+ShippingCost 部署到线上
+
+2017.01.13
 POST，RESTful
 /ShippingCost/{companyCode}/{SO id}
 
@@ -21,11 +24,17 @@ GET，RESTful
 }
 
 
+curl -X GET http://127.0.0.1:8088/ShippingCost/PA/123
+
+curl -X GET http://127.0.0.1:8088/ShippingCost/PA/123
+curl -X POST http://127.0.0.1:8088/ShippingCost/PA/123
+curl -X GET http://127.0.0.1:8088/ShippingCost/PA/123
+
 curl -X GET http://127.0.0.1:8089/ShippingCost/PA/123
 
-curl -X GET http://172.18.100.87:8088/ShippingCost/PA/123
-curl -X POST http://172.18.100.87:8088/ShippingCost/PA/123
-curl -X GET http://172.18.100.87:8088/ShippingCost/PA/123
+curl -X GET http://127.0.0.1:8089/ShippingCost/PA/123
+curl -X POST http://127.0.0.1:8089/ShippingCost/PA/123
+curl -X GET http://127.0.0.1:8089/ShippingCost/PA/123
 
 
 2016.12.02
