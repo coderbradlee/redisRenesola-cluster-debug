@@ -16,6 +16,7 @@ void scm_supplier(HttpServer& server)
     {
         try 
         {
+        	std::cout<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
             ptree pt;
 			read_json(request->content, pt);
 			
