@@ -1,4 +1,22 @@
-﻿2017.01.22
+﻿2017.02.14
+增加scm的表,来源于 t_supplier_basic
+supplier_id supplier_no company_name_en status type=Group Supplier
+{
+	supplier_id:"",
+	supplier_no:"",
+	company_name_en:"",
+	status:"",
+	type="Group Supplier"
+}
+测试：
+1、curl -X POST http://127.0.0.1:9088/scm -d '"{supplier_id:"supplier_id1",supplier_no:"supplier_no1",company_name_en:"company_name_en1",status:"status1",type="Group Supplier"}"'
+2、curl -X GET http://127.0.0.1:9088/scm -d '"{supplier_id:"supplier_id1"}'
+
+
+
+
+
+2017.01.22
 ShippingCost 部署到线上
 
 2017.01.13
