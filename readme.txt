@@ -9,7 +9,7 @@ supplier_id supplier_no company_name_en status type=Group Supplier
 	type="Group Supplier"
 }
 测试：
-1、curl -X POST http://127.0.0.1:9088/scm -d '"{supplier_id:"supplier_id1",supplier_no:"supplier_no1",company_name_en:"company_name_en1",status:"status1",type="Group Supplier"}"'
+1、curl -X POST http://127.0.0.1:9088/scm -d '"{"supplier_id":"supplier_id1","supplier_no":"supplier_no1","company_name_en":"company_name_en1","status":"status1","type":"Group Supplier"}"'
 2、curl -X GET http://127.0.0.1:9088/scm -d '"{supplier_id:"supplier_id1"}'
 
 

@@ -23,7 +23,8 @@ void scm_supplier(HttpServer& server)
 			string supplier_no=pt.get<string>("supplier_no");
 			string company_name_en=pt.get<string>("company_name_en");
 			string status=pt.get<string>("status");
-			string type="Group Supplier";
+			string type=pt.get<string>("type");
+			std::cout<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
 			string keys="{scm_supplier}"+supplier_id;
 			string hmset_command="hmset "+keys+" supplier_no "+supplier_no+" company_name_en "+company_name_en+" status "+status+" type "+type;
 			redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, keys.c_str(), hmset_command.c_str()));
