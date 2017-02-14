@@ -20,9 +20,13 @@ void scm_supplier(HttpServer& server)
 			read_json(request->content, pt);
 			
             string supplier_id=pt.get<string>("supplier_id");
+            std::cout<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
 			string supplier_no=pt.get<string>("supplier_no");
+			std::cout<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
 			string company_name_en=pt.get<string>("company_name_en");
+			std::cout<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
 			string status=pt.get<string>("status");
+			std::cout<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
 			string type=pt.get<string>("type");
 			std::cout<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
 			string keys="{scm_supplier}"+supplier_id;
