@@ -1,7 +1,7 @@
-#ifndef COMMON_RESOURCE_HPP
-#define COMMON_RESOURCE_HPP
+#ifndef SCM_RESOURCE_HPP
+#define SCM_RESOURCE_HPP
 #include "common.hpp"
-void scm(HttpServer& server)
+void scm_supplier(HttpServer& server)
 {
 	try
 	{

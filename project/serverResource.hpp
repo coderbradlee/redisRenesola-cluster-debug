@@ -3208,7 +3208,7 @@ void serverRedisResource(HttpServer& server,string redisHost,string redisPort,st
 		t_function_get(server);
 		apollo(server,url);
 		defaultindex(server);
-        scm(server);
+        scm_supplier(server);
 	}
 	catch(exception& e) 
 	{
