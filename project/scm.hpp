@@ -17,11 +17,11 @@ void scm_supplier(HttpServer& server)
         try 
         {
             ptree pt;
-            std::string s;
-			std::ostringstream os;
-			request->content>>os.rdbuf();
-			s=os.str();
-            std::cout<<s<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
+   //          std::string s;
+			// std::ostringstream os;
+			// request->content>>os.rdbuf();
+			// s=os.str();
+   //          std::cout<<s<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
 			read_json(request->content, pt);
 			
             string supplier_id=pt.get<string>("supplier_id");
