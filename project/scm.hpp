@@ -16,8 +16,8 @@ void scm_supplier(HttpServer& server)
     {
         try 
         {
-        	std::cout<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
             ptree pt;
+            std::cout<<request->content<<":"<<__FILE__<<":"<<__LINE__<<std::endl;
 			read_json(request->content, pt);
 			
             string supplier_id=pt.get<string>("supplier_id");
