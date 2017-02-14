@@ -24,8 +24,9 @@ void scm_supplier(HttpServer& server)
 			string company_name_en=pt.get<string>("company_name_en");
 			string status=pt.get<string>("status");
 			string type="Group Supplier";
-			string incr_command="hmset {scm_supplier}"+supplier_id+" supplier_no "+supplier_no+" company_name_en "+company_name_en+" status "+status+" type "+type;
-			redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str()));
+			string keys="{scm_supplier}"+supplier_id;
+			string hmset_command="hmset "+keys+" supplier_no "+supplier_no+" company_name_en "+company_name_en+" status "+status+" type "+type;
+			redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, keys.c_str(), hmset_command.c_str()));
         
         	freeReplyObject(incr);
 	        ptime now = second_clock::local_time();  
