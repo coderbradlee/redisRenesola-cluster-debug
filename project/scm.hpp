@@ -30,7 +30,7 @@ void scm(HttpServer& server)
         	freeReplyObject(incr);
 	        ptime now = second_clock::local_time();  
 	        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
-	        string temp="{\"status\":ok",\"replyTime\" : \""+now_str+"\"}";
+	        string temp="{\"status\":ok\",\"replyTime\" : \""+now_str+"\"}";
 	        response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
         }
         catch(exception& e) {
