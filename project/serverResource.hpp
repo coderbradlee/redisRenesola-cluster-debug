@@ -666,7 +666,7 @@ void get_timezone(HttpServer::Response& response, std::shared_ptr<HttpServer::Re
             cout<<__FILE__<<":"<<__LINE__<<endl;
             string temp_flowno="/timezone/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
-            cout<<left_path<<endl;
+            cout<<left_path<<":"<<__FILE__<<""<<__LINE__<<endl;
             
             string company=left_path;
             
@@ -691,9 +691,7 @@ void get_timezone(HttpServer::Response& response, std::shared_ptr<HttpServer::Re
 
         freeReplyObject(reply);
         cout<<value<<":"<<__FILE__<<""<<__LINE__<<endl;
-        ptime now = second_clock::local_time();  
-        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
-        //string temp="{\"flowNo\":\""+value+"\",\"replyTime\" : \""+now_str+"\"}";
+      
         string temp=value;
         cout<<temp<<":"<<__FILE__<<""<<__LINE__<<endl;
         
@@ -721,7 +719,7 @@ void post_with_shipping_cost(HttpServer::Response& response, std::shared_ptr<Htt
             cout<<__FILE__<<":"<<__LINE__<<endl;
             string temp_flowno="/ShippingCost/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
-            cout<<left_path<<endl;
+            cout<<left_path<<":"<<__FILE__<<""<<__LINE__<<endl;
             std::vector<std::string> one_pair;
             boost::split(one_pair,left_path , boost::is_any_of("/"));
 
@@ -786,7 +784,7 @@ void post_timezone(HttpServer::Response& response, std::shared_ptr<HttpServer::R
             cout<<__FILE__<<":"<<__LINE__<<endl;
             string temp_flowno="/timezone/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
-            cout<<left_path<<endl;
+            cout<<left_path<<":"<<__FILE__<<""<<__LINE__<<endl;
             std::vector<std::string> one_pair;
             boost::split(one_pair,left_path , boost::is_any_of("/"));
 
