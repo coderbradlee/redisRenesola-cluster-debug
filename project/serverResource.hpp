@@ -838,7 +838,7 @@ void defaultindex(HttpServer& server)
 		string filename="web";
         
 		string path=request->path;
-        //cout<<path<<endl;
+        cout<<path<<endl;
         string temp="/flowNo/";
         if(path.compare(0,temp.length(),temp) == 0)
         {
