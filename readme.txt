@@ -1,4 +1,9 @@
-﻿2017.01.22
+﻿2017.3.6
+增加公司时区查询，修改接口
+curl -X GET http://127.0.0.1:8088/timezone/US
+curl -X POST http://127.0.0.1:8088/timezone/US
+
+2017.01.22
 ShippingCost 部署到线上
 
 2017.01.13
