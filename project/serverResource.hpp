@@ -786,7 +786,6 @@ void post_timezone(HttpServer::Response& response, std::shared_ptr<HttpServer::R
             cout<<__FILE__<<":"<<__LINE__<<endl;
             string temp_flowno="/timezone/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
-            string left_path=request->path.substr(temp_flowno.length(), request->path.length());
             cout<<left_path<<endl;
             std::vector<std::string> one_pair;
             boost::split(one_pair,left_path , boost::is_any_of("/"));
@@ -853,7 +852,7 @@ void defaultindex(HttpServer& server)
             get_with_shipping_cost(response,request);
             return;
         }
-        string temp3="/timezone/"
+        string temp3="/timezone/";
         if(path.compare(0,temp3.length(),temp3) == 0)
         {
             cout<<__FILE__<<":"<<__LINE__<<endl;

@@ -1,7 +1,29 @@
 ﻿2017.3.6
 增加公司时区查询，修改接口
 curl -X GET http://127.0.0.1:8088/timezone/US
-curl -X POST http://127.0.0.1:8088/timezone/US
+
+curl -X POST http://127.0.0.1:8088/timezone/UK/0
+curl -X POST http://127.0.0.1:8088/timezone/ZA/02
+curl -X POST http://127.0.0.1:8088/timezone/PA/-05
+curl -X POST http://127.0.0.1:8088/timezone/FR/01
+curl -X POST http://127.0.0.1:8088/timezone/JP/09
+curl -X POST http://127.0.0.1:8088/timezone/ID/07
+curl -X POST http://127.0.0.1:8088/timezone/IT/01
+curl -X POST http://127.0.0.1:8088/timezone/AU/10
+curl -X POST http://127.0.0.1:8088/timezone/US/-06
+curl -X POST http://127.0.0.1:8088/timezone/SH/08
+curl -X POST http://127.0.0.1:8088/timezone/DE/01
+curl -X POST http://127.0.0.1:8088/timezone/CA/-06
+curl -X POST http://127.0.0.1:8088/timezone/IN/05.5
+curl -X POST http://127.0.0.1:8088/timezone/MX/-06
+curl -X POST http://127.0.0.1:8088/timezone/SG/0
+curl -X POST http://127.0.0.1:8088/timezone/JS/08
+curl -X POST http://127.0.0.1:8088/timezone/TR/02
+curl -X POST http://127.0.0.1:8088/timezone/TH/07
+curl -X POST http://127.0.0.1:8088/timezone/BR/-03
+curl -X POST http://127.0.0.1:8088/timezone/BVI/08
+curl -X POST http://127.0.0.1:8088/timezone/RU/04
+
 
 2017.01.22
 ShippingCost 部署到线上
