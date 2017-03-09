@@ -642,7 +642,7 @@ void get_scm_flow_no(HttpServer::Response& response, std::shared_ptr<HttpServer:
             string get_command="hget "+key;
             cout<<incr_command<<endl;
             cout<<get_command<<endl;
-            redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str());
+            redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str()));
             freeReplyObject(reply);
         // cout<<__FILE__<<""<<__LINE__<<endl;
             reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
