@@ -637,11 +637,15 @@ void get_scm_flow_no(HttpServer::Response& response, std::shared_ptr<HttpServer:
             {
                 dayormonthoryear=year;
             }
-            string get_command="hincrby "+id_name+" "+company+"_"+type+"_"+way+"_"+dayormonthoryear+" 1";
+            string key=id_name+" "+company+"_"+type+"_"+way+"_"+dayormonthoryear;
+            string incr_command="hincrby "+key+" 1";
+            string get_command="hget "+key;
+            cout<<incr_command<<endl;
             cout<<get_command<<endl;
-        //redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
-        cout<<__FILE__<<""<<__LINE__<<endl;
-        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
+            redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str());
+            freeReplyObject(reply);
+        // cout<<__FILE__<<""<<__LINE__<<endl;
+            reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
         string value="";
         //cout<<__LINE__<<endl;
         if(reply->str!=nullptr)
@@ -651,7 +655,7 @@ void get_scm_flow_no(HttpServer::Response& response, std::shared_ptr<HttpServer:
           //retJson.put<std::string>("flow_number",value);
         }
         freeReplyObject(reply);
-        cout<<value<<":"<<__FILE__<<""<<__LINE__<<endl;
+        cout<<value<<":"<<__FILE__<<":"<<__LINE__<<endl;
         ptime now = second_clock::local_time();  
         string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
         string temp="{\"flowNo\":\""+value+"\",\"replyTime\" : \""+now_str+"\"}";
