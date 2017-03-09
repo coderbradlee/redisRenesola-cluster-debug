@@ -586,6 +586,95 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
             response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
         }
 }
+void get_scm_flow_no(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
+{
+     try 
+        {
+            //BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<;
+            //BOOST_LOG(test_lg::get())<<"request: "<<request->method<<" "<<request->path;initsink->flush();
+            //cout<<request->path<<endl;
+            string temp_flowno="/scm_flow_no/";
+            string left_path=request->path.substr(temp_flowno.length(), request->path.length());
+            cout<<left_path<<endl;
+            std::vector<std::string> one_pair;
+            boost::split(one_pair,left_path , boost::is_any_of("/"));
+
+
+            string company=one_pair[0];
+            string type=one_pair[1];
+            string way=one_pair[2];
+            //UK,ZA,FR,IT,DE,TR,RU，这些先用新规则
+            if(company.length()>2||type.length()>2)
+            {
+                string temp="path error";
+                response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
+                return;
+            }
+            if(way!="day"&&way!="month"&&way!="year")
+            {
+                string temp="flush way error";
+                response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
+                return;
+            }
+            //hincrby {scm_no} FR_PO_day_2017_03_09 1
+            string id_name="{scm_no}";
+            string dayormonthoryear;
+            std::vector<std::string> hms;
+            string which_day  =  to_iso_extended_string(second_clock::local_time().date())
+            boost::split(hms,which_day , boost::is_any_of("-"));
+            string year=hms[0];
+            string month=hms[1];
+            string day=hms[2];
+            if(way=="day")
+            {
+                dayormonthoryear=which_day;
+            }
+            else if(way=="month")
+            {
+                dayormonthoryear=year+"-"+month;
+            }
+            else//year
+            {
+                dayormonthoryear=year;
+            }
+            string get_command="hincrby "+id_name+" "+company+"_"+type+"_"+way+"_"+dayormonthoryear+" 1";
+            cout<<get_command<<endl;
+        //redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
+        cout<<__FILE__<<""<<__LINE__<<endl;
+        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
+        string value="";
+        //cout<<__LINE__<<endl;
+        if(reply->str!=nullptr)
+        {
+            //cout<<reply->type<<endl;
+          value+=reply->str;
+          //retJson.put<std::string>("flow_number",value);
+        }
+        freeReplyObject(reply);
+        cout<<value<<":"<<__FILE__<<""<<__LINE__<<endl;
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        string temp="{\"flowNo\":\""+value+"\",\"replyTime\" : \""+now_str+"\"}";
+
+        cout<<temp<<":"<<__FILE__<<""<<__LINE__<<endl;
+        // std::stringstream ss;
+        // write_json(ss, retJson);
+        // //ÔÚÕâÀïÅÐ¶ÏÀïÃæµÄchildren¼°childrensµÄÖµ£¬Èç¹ûÎª¿Õ£¬ÉèÖÃÎª¿ÕÊý×é,ÓÃreplace
+        // string temp=ss.str();
+        response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
+        }
+        catch(json_parser_error& e) 
+        {
+            string temp="json error";
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
+        }
+        catch(exception& e) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
+        }
+        catch(...) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
+        }
+}
 void get_with_shipping_cost(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
 {
      try 
@@ -855,6 +944,13 @@ void defaultindex(HttpServer& server)
         {
             cout<<__FILE__<<":"<<__LINE__<<endl;
             get_timezone(response,request);
+            return;
+        }
+        string temp4="/scm_flow_no/";
+        if(path.compare(0,temp4.length(),temp4) == 0)
+        {
+            cout<<__FILE__<<":"<<__LINE__<<endl;
+            get_scm_flow_no(response,request);
             return;
         }
 		//Replace all ".." with "." (so we can't leave the web-directory)

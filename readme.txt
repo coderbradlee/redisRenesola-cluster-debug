@@ -1,4 +1,10 @@
-﻿2017.3.6
+﻿2017.3.9
+待增加接口
+curl -X GET http://127.0.0.1:8088/scm_flow_no/JP/SO/day
+curl -X GET http://127.0.0.1:8088/scm_flow_no/JP/SO/month
+curl -X GET http://127.0.0.1:8088/scm_flow_no/JP/SO/year
+
+2017.3.6
 增加公司时区查询，修改接口
 curl -X GET http://127.0.0.1:8088/timezone/US
 
