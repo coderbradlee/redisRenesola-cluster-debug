@@ -620,7 +620,7 @@ void get_scm_flow_no(HttpServer::Response& response, std::shared_ptr<HttpServer:
             string id_name="{scm_no}";
             string dayormonthoryear;
             std::vector<std::string> hms;
-            string which_day  =  to_iso_extended_string(second_clock::local_time().date())
+            string which_day  =  to_iso_extended_string(second_clock::local_time().date());
             boost::split(hms,which_day , boost::is_any_of("-"));
             string year=hms[0];
             string month=hms[1];
