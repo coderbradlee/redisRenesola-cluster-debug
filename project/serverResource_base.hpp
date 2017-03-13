@@ -319,14 +319,14 @@ void processCommandPool()
 
 
 
-void post_deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
+void deal_with_subflowno_number(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
 {
      try 
         {
             //BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<;
             //BOOST_LOG(test_lg::get())<<"request: "<<request->method<<" "<<request->path;initsink->flush();
             //cout<<request->path<<endl;
-            string temp_flowno="/flowNo/";
+            string temp_flowno="/subflowno/";
             string left_path=request->path.substr(temp_flowno.length(), request->path.length());
             cout<<left_path<<endl;
             std::vector<std::string> one_pair;
@@ -336,7 +336,6 @@ void post_deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<
             string type=one_pair[1];
             string num=one_pair[2];
             string sub_type=one_pair[3];
-            //UK,ZA,FR,IT,DE,TR,RU，这些先用新规则
             if(company.length()>3||type.length()>3)
             {
                 string temp="path error";

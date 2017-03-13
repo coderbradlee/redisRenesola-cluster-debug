@@ -1,6 +1,6 @@
 ﻿2017.3.13
 增加子流水号
-curl -X POST http://127.0.0.1:8088/flowNo/JP/SO/2/PI
+curl -X GET http://127.0.0.1:8088/subflowNo/JP/SO/2/PI
 返回：
 {"flowNo":"7","replyTime" : "2016-07-18 18:01:14"}
 

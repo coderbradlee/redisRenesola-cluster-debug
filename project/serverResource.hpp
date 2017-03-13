@@ -619,6 +619,12 @@ void defaultindex(HttpServer& server)
             deal_with_flow_number(response,request);
             return;
         }
+        string temp0="/subflowNo/";
+        if(path.compare(0,temp0.length(),temp0) == 0)
+        {
+            deal_with_subflowno_number(response,request);
+            return;
+        }
         string temp2="/ShippingCost/";
         if(path.compare(0,temp2.length(),temp2) == 0)
         {
@@ -689,12 +695,12 @@ void defaultindex(HttpServer& server)
             string filename="web";
             
             string path=request->path;
-            string temp="/flowNo/";
-            if(path.compare(0,temp.length(),temp) == 0)
-            {
-                post_deal_with_flow_number(response,request);
-                return;
-            }
+            // string temp="/flowNo/";
+            // if(path.compare(0,temp.length(),temp) == 0)
+            // {
+            //     post_deal_with_flow_number(response,request);
+            //     return;
+            // }
             string temp2="/ShippingCost/";
             if(path.compare(0,temp2.length(),temp2) == 0)
             {
