@@ -1,5 +1,7 @@
 ﻿#ifndef SERVER_RESOURCE_BASE_HPP
 #define	SERVER_RESOURCE_BASE_HPP
+typedef SimpleWeb::Server<SimpleWeb::HTTP> HttpServer;
+typedef SimpleWeb::Client<SimpleWeb::HTTP> HttpClient;
 
 void post_deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
 {
