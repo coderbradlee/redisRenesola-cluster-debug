@@ -611,7 +611,7 @@ void defaultindex(HttpServer& server)
 		 server.default_resource["GET"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
 		string filename="web";
         
-		string path=request->path;
+		string path=request->patsubFlowNoh;
         cout<<path<<endl;
         string temp="/flowNo/";
         if(path.compare(0,temp.length(),temp) == 0)
@@ -619,7 +619,7 @@ void defaultindex(HttpServer& server)
             deal_with_flow_number(response,request);
             return;
         }
-        string temp0="/subflowNo/";
+        string temp0="/subFlowNo/";
         if(path.compare(0,temp0.length(),temp0) == 0)
         {
             deal_with_subflowno_number(response,request);
