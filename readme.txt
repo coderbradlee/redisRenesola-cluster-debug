@@ -1,4 +1,18 @@
-﻿2017.3.13
+﻿2017.03.22
+关于invoice_no的产生，之前的流水号规则如下：
+1、UK、ZA、FR、IT、DE、TR、RU、PA、US、CA、MX、BR、JP、TH这些公司流水号按公司产生，忽略后面的类型，即同一个公司一个池
+2、其他公司按公司+类型产生流水号，即公司+类型为一个池
+
+请求规则统一为：GET http://x.x.x.x:8088/flowNo/JS/PO
+
+如需要invoice_no按系统连续，需要增加新接口，把系统号作为key的一部分，
+然后关于发票号的接口统一请求新的接口
+需要增加两个接口：
+curl -X GET http://127.0.0.1:8088/subFlowNo/3/JP/SO/2/PI
+curl -X GET http://127.0.0.1:8088/flowNo/3/JP/SO
+数字3代表系统号
+
+2017.3.13
 增加子流水号
 curl -X GET http://127.0.0.1:8088/subFlowNo/JP/SO/2/PI
 返回：
