@@ -331,7 +331,7 @@ void deal_with_subflowno_number(HttpServer::Response& response, std::shared_ptr<
             cout<<left_path<<endl;
             std::vector<std::string> one_pair;
             boost::split(one_pair,left_path , boost::is_any_of("/"));
-            cout<<one_pair.length()<<endl;
+            cout<<one_pair.size()<<endl;
             string company=one_pair[0];
             string type=one_pair[1];
             string num=one_pair[2];
