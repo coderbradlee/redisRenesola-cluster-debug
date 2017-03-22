@@ -12,8 +12,10 @@ curl -X GET http://127.0.0.1:8088/subFlowNo/3/JP/SO/2/PI
 redis命令为hincrby {flow_no_sub_3} JP_SO_2_PI 1
 
 curl -X GET http://127.0.0.1:8088/flowNo/3/JP/SO
-redis命令为
+redis命令为incr {JP_OVERSEAS_flow_number_3}:id
 
+curl -X GET http://127.0.0.1:8088/flowNo/3/JS/SO
+redis命令为incr {JS_SO_flow_number_3}:id
 
 数字3代表系统号
 
