@@ -452,7 +452,7 @@ void deal_with_flow_number_with_systemno(HttpServer::Response& response,const st
 {
      try 
         {
-            string systemno=one_pair[0]
+            string systemno=one_pair[0];
             string company=one_pair[1];
             string type=one_pair[2];
             //UK,ZA,FR,IT,DE,TR,RU，这些先用新规则
