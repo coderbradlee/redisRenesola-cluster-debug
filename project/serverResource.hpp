@@ -211,7 +211,11 @@ void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpS
             std::vector<std::string> one_pair;
             boost::split(one_pair,left_path , boost::is_any_of("/"));
 
-
+            if(one_pair.size()>2)
+            {
+                deal_with_flow_number_with_systemno(response,one_pair);
+                return;
+            }
             string company=one_pair[0];
             string type=one_pair[1];
             //UK,ZA,FR,IT,DE,TR,RU，这些先用新规则

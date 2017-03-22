@@ -448,5 +448,66 @@ void deal_with_subflowno_number(HttpServer::Response& response, std::shared_ptr<
             response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
         }
 }
+void deal_with_flow_number_with_systemno(HttpServer::Response& response,const std::vector<std::string>& one_pair)
+{
+     try 
+        {
+            string systemno=one_pair[0]
+            string company=one_pair[1];
+            string type=one_pair[2];
+            //UK,ZA,FR,IT,DE,TR,RU，这些先用新规则
+            if((company=="UK")||(company=="ZA")||(company=="FR")||(company=="IT")||(company=="DE")||(company=="TR")||(company=="RU")||(company=="PA")||(company=="US")||(company=="CA")||(company=="MX")||(company=="BR")||(company=="JP")||(company=="TH"))
+            {
+                type="OVERSEAS";
+            }
+            // if(company!="JS")
+            // {
+            //     type="OVERSEAS";
+            // }
+            string id_name="{"+company+"_"+type+"_"+"flow_number_"+systemno+"}:id";
+            string incr_command="incr "+id_name;
+            string get_command="get "+id_name;
+            cout<<id_name<<endl;
+            cout<<incr_command<<endl;
+            cout<<get_command<<endl;
+            
+        //redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
+            redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str()));
+        freeReplyObject(incr);
+        //redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
+        cout<<__FILE__<<""<<__LINE__<<endl;
+        redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
+        string value="";
+        //cout<<__LINE__<<endl;
+        if(reply->str!=nullptr)
+        {
+            //cout<<reply->type<<endl;
+          value+=reply->str;
+          //retJson.put<std::string>("flow_number",value);
+        }
+        freeReplyObject(reply);
+        cout<<value<<":"<<__FILE__<<""<<__LINE__<<endl;
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        string temp="{\"flowNo\":\""+value+"\",\"replyTime\" : \""+now_str+"\"}";
 
+        cout<<temp<<":"<<__FILE__<<""<<__LINE__<<endl;
+        // std::stringstream ss;
+        // write_json(ss, retJson);
+        // //ÔÚÕâÀïÅÐ¶ÏÀïÃæµÄchildren¼°childrensµÄÖµ£¬Èç¹ûÎª¿Õ£¬ÉèÖÃÎª¿ÕÊý×é,ÓÃreplace
+        // string temp=ss.str();
+        response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
+        }
+        catch(json_parser_error& e) 
+        {
+            string temp="json error";
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
+        }
+        catch(exception& e) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
+        }
+        catch(...) {
+            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
+        }
+}
 #endif	
