@@ -1,5 +1,8 @@
 #pragma once
-#define BOOST_LOG_DYN_LINK 1
+
+#define BOOST_ALL_NO_LIB 1   // do not auto link, instead you link manually to your import libraries.
+#define BOOST_ALL_DYN_LINK 1 // tells you will link to shared libraries
+#define BOOST_LOG_DYN_LINK 1 // explicitly says to link boost::log symbols to shared libraries
 
 #include <stdexcept>
 #include <string>

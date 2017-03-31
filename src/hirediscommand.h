@@ -36,6 +36,7 @@
 extern "C"
 {
 #include "hiredis/hiredis.h"
+#include "hiredis/sds.h"
 }
 
 namespace RedisCluster
