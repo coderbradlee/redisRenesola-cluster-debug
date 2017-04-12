@@ -1,0 +1,7 @@
+alias c='clear'
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/mpc/lib/:/usr/local/gmp/lib/:/usr/local/mpfr/lib/:/usr/local/lib:/usr/lib64/mysql:/root/redisRenesola-cluster-debug
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/ace/lib:/usr/local/mpc/lib/:/usr/local/gmp/lib/:/usr/local/mpfr/lib/:/usr/local/lib:/usr/lib:/usr/lib64:/usr/local/lib:/usr/local/lib64:/usr/local/lib/pkcs11:/usr/lib64/ruby
+export PATH=$PATH:/usr/local/ace/include:/usr/local/mysql/bin:/usr/local/bin:/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/usr/local/include:/usr/local/lib/pkcs11:/usr/local/include/openssl:/usr/local/include/boost:/usr/lib64/mysql:/usr/local/include/activemqcpp:/usr/bin:/usr/include/apr-1:/usr/local/lib/libzip/include
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/usr/local/lib:/usr/local/lib64:/usr/lib:/usr/lib64:/usr/local/lib/pkcs11
+export P11_KIT_LIBS=$P11_KIT_LIBS:/usr/local/lib/libp11-kit.so
+ulimit -S -c 0 > /dev/null 2>&1
