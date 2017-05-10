@@ -607,6 +607,7 @@ void post_timezone(HttpServer::Response& response, std::shared_ptr<HttpServer::R
             response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
         }
 }
+
 void defaultindex(HttpServer& server)
 {
 	try
@@ -717,12 +718,494 @@ void defaultindex(HttpServer& server)
                 post_timezone(response,request);
                 return;
             } 
+            string temp4="/apollo";
+            if(path.compare(0,temp4.length(),temp4) == 0)
+            {
+                apollo_all(response,request);
+                return;
+            } 
         };
 	}
 	catch(exception& e) 
 	{
           BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
 	}
+}
+void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
+{
+    cout<<"apollo_all:"<<__FILE__<<":"<<__LINE__<<endl;
+    try {
+        ptree pt;
+        cout<<url<<__FILE__<<__LINE__<<endl;
+        read_json(request->content, pt);
+        
+        ////cout<<__LINE__<<endl;
+        string operation=pt.get<string>("operation");
+        //string dataType=pt.get<string>("dataType");
+        string retString;
+        bool retBool;
+        if((operation.compare("OVER_WRITE")==0))
+        {
+            retString=OVER_WRITE_T_SYS_PARAMETER(pt);
+        }
+        else if((operation.compare("CREATE_SESSION")==0))
+        {
+            retString=CREATE_SESSION_HTTP_SESSION(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("ADD_USERID_UNDER_SESSION")==0))
+        {
+            retString=ADD_USERID_UNDER_SESSION(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("DELETE_SESSION")==0))
+        {
+            retString=DELETE_SESSION(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("QUERY_SESSION")==0))
+        {
+            retString=QUERY_SESSION(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("UPDATE_SESSION_DEADLINE")==0))
+        {
+            
+            retString=UPDATE_SESSION_DEADLINE(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("BATCH_CREATE_AREAS")==0))
+        {
+            
+            retString=BATCH_CREATE_AREAS(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_AREAS_BY_KEYS")==0))
+        {
+            
+            retString=LIST_AREAS_BY_KEYS(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_AREAS_BY_KEYWORDS")==0))
+        {
+            
+            retString=LIST_AREAS_BY_KEYWORDS(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("DELETE_AREAS_BY_KEYS")==0))
+        {
+            
+            retString=DELETE_AREAS_BY_KEYS(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("DELETE_AREAS_BY_KEYWORDS")==0))
+        {
+            
+            retString=DELETE_AREAS_BY_KEYWORDS(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("BATCH_CREATE_LANGUAGE")==0))
+        {
+            
+            retString=BATCH_CREATE_LANGUAGE(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_LANGUAGE_BY_KEYS")==0))
+        {
+            
+            retString=LIST_LANGUAGE_BY_KEYS(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_LANGUAGE_BY_KEYWORDS")==0))
+        {
+            
+            retString=LIST_LANGUAGE_BY_KEYWORDS(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("BATCH_CREATE_SHIPVIA")==0))
+        {
+            
+            retString=BATCH_CREATE_SHIPVIA(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_SHIPVIA_BY_KEYS")==0))
+        {
+            
+            retString=LIST_SHIPVIA_BY_KEYS(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_SHIPVIA_BY_KEYWORDS")==0))
+        {
+            
+            retString=LIST_SHIPVIA_BY_KEYWORDS(pt);
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("BATCH_CREATE_TRADETERM")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:trade","BATCH_CREATE_TRADETERM");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_TRADETERM_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:trade","LIST_TRADETERM_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_TRADETERM_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:trade","LIST_TRADETERM_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("BATCH_CREATE_WEBSITE")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:website","BATCH_CREATE_WEBSITE");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_WEBSITE_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:website","LIST_WEBSITE_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_WEBSITE_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:website","LIST_WEBSITE_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("BATCH_CREATE_SEAPORT")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:seaport","BATCH_CREATE_SEAPORT");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_SEAPORT_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:seaport","LIST_SEAPORT_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_SEAPORT_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:seaport","LIST_SEAPORT_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("BATCH_CREATE_WAREHOUSE")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:warehouse","BATCH_CREATE_WAREHOUSE");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_WAREHOUSE_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:warehouse","LIST_WAREHOUSE_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_WAREHOUSE_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:warehouse","LIST_WAREHOUSE_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        /////////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_AIRPORT")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:airport","BATCH_CREATE_AIRPORT");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_AIRPORT_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:airport","LIST_AIRPORT_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_AIRPORT_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:airport","LIST_AIRPORT_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        //////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_CURRENCY")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:currency","BATCH_CREATE_CURRENCY");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_CURRENCY_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:currency","LIST_CURRENCY_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_CURRENCY_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:currency","LIST_CURRENCY_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        ////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_COUNTRY")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:country","BATCH_CREATE_COUNTRY");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_COUNTRY_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:country","LIST_COUNTRY_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_COUNTRY_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:country","LIST_COUNTRY_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        ////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_REGION")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:region","BATCH_CREATE_REGION");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_REGION_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:region","LIST_REGION_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_REGION_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:region","LIST_REGION_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        ////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_STATE")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:state","BATCH_CREATE_STATE");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_STATE_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:state","LIST_STATE_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_STATE_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:state","LIST_STATE_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        ////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_CITY")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:city","BATCH_CREATE_CITY");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_CITY_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:city","LIST_CITY_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_CITY_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:city","LIST_CITY_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        ////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_UOM")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:uom","BATCH_CREATE_UOM");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_UOM_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:uom","LIST_UOM_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_UOM_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:uom","LIST_UOM_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        ////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_EXCHANGE_RATES")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:exchange","BATCH_CREATE_EXCHANGE_RATES");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_EXCHANGE_RATES_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:exchange","LIST_EXCHANGE_RATES_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_EXCHANGE_RATES_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:exchange","LIST_EXCHANGE_RATES_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        ////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_TAX_SCHEDULES")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:tax","BATCH_CREATE_TAX_SCHEDULES");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_TAX_SCHEDULES_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:tax","LIST_TAX_SCHEDULES_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_TAX_SCHEDULES_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:tax","LIST_TAX_SCHEDULES_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        ////////////////////////////////////////////////
+        else if((operation.compare("BATCH_CREATE_TAX_FILES")==0))
+        {
+            
+            retString=GENERAL_BATCH_CREATE(pt,"{KV_MF}:taxfile","BATCH_CREATE_TAX_FILES");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_TAX_FILES_BY_KEYS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYS(pt,"{KV_MF}:taxfile","LIST_TAX_FILES_BY_KEYS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("LIST_TAX_FILES_BY_KEYWORDS")==0))
+        {
+            
+            retString=GENERAL_LIST_BY_KEYWORDS(pt,"{KV_MF}:taxfile","LIST_TAX_FILES_BY_KEYWORDS");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("SET_USER_ROLE")==0))
+        {
+            
+            retString=SET_USER_ROLE(pt,"{KV_MF}:role","SET_USER_ROLE");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+        else if((operation.compare("GET_USER_ROLE")==0))
+        {
+            
+            retString=GET_USER_ROLE(pt,"{KV_MF}:role","GET_USER_ROLE");
+            retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+            response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        }
+    }
+    catch(json_parser_error& e) 
+    {
+        //cout<<e.what()<<endl;
+        //{"errorCode":200,"message":"session read from cache[2] successfully","replyData":[{"sessionId":"01234567890123456789","value":{"userId":"01234567890123456789"}}],"replier":"apollo-cache","replyTime":"2015-05-25 08:00:00"}
+        ptree retJson;
+        retJson.put("errorCode",JSON_READ_OR_WRITE_ERROR);
+        retJson.put("message","json parser error");
+        retJson.put("replyData",e.what());
+        retJson.put("replier","apollo-cache");
+
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        ////cout<<now_str<<endl;
+        retJson.put<std::string>("replyTime",now_str);
+        std::stringstream ss;
+        write_json(ss, retJson);
+        ////cout<<ss.str();
+        string retString=ss.str();
+        retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
+        response <<"HTTP/1.1 400 Bad Request\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
+        
+    }
+    catch(exception& e) {
+        response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
+        
+    }
+    catch(...) {
+        response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
+        
+    }
+    
 }
 string OVER_WRITE_T_SYS_PARAMETER(ptree& pt)
 {
