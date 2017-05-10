@@ -2990,7 +2990,7 @@ int apollo(HttpServer& server,string url)
 
 
 	//set t_function:A1 "{\"function_id\":\"A1\",\"code\":\"a1\",\"name\":\"a1name\",\"description\":\"a1descrip\",\"up_level_function_id\":null,\"level\":1,\"type\":1,\"note\":\"Alibaba\",\"dr\":0,\"data_version\":1}"
-    server.resource["^/"+url+"$"]["POST"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
+    server.resource["^/"+url+"$"]["POST"]=[&](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
         try {
             ptree pt;
 			cout<<url<<__FILE__<<__LINE__<<endl;
