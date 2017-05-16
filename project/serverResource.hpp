@@ -3948,7 +3948,7 @@ void defaultindex(HttpServer& server)
                 post_timezone(response,request);
                 return;
             } 
-            string temp4="/apollo";
+            string temp4="/"+url;
             if(path.compare(0,temp4.length(),temp4) == 0)
             {
                 apollo_all(response,request);
