@@ -2818,64 +2818,7 @@ int apollo(HttpServer& server,string url)
             return -1;
         }
     };
-
-    //     server.resource["^/flow_number$"]["GET"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
-    //     try 
-    //     {
-    //        ptree pt;
-    //         ////cout<<__LINE__<<endl;
-    //         read_json(request->content, pt);
-            
-    //         ////cout<<__LINE__<<endl;
-    //         string type=pt.get<std::string>(flow_number_param1);
-    //         string company=pt.get<std::string>(flow_number_param2);
-    //         string id_name="{"+type+"_"+company+"_"+"flow_number}:id";
-    //         string incr_command="incr "+id_name;
-    //         string get_command="get "+id_name;
-    //         cout<<id_name<<endl;
-    //         cout<<incr_command<<endl;
-    //         cout<<get_command<<endl;
-    //     //redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "incr {flow_number}:id"));
-    //         redisReply * incr=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), incr_command.c_str()));
-    //     freeReplyObject(incr);
-    //     //redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, "{flow_number}:id", "get {flow_number}:id"));
-    //     redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, id_name.c_str(), get_command.c_str()));
-    //     string value="";
-    //     //cout<<__LINE__<<endl;
-    //     if(reply->str!=nullptr)
-    //     {
-    //         //cout<<reply->type<<endl;
-    //       value+=reply->str;
-    //       //retJson.put<std::string>("flow_number",value);
-    //     }
-    //     freeReplyObject(reply);
-
-    //     string temp="{\"flow_number\":"+value+"}";
-    //     // std::stringstream ss;
-    //     // write_json(ss, retJson);
-    //     // //在这里判断里面的children及childrens的值，如果为空，设置为空数组,用replace
-    //     // string temp=ss.str();
-    //     response <<"HTTP/1.1 200 OK\r\nContent-Length: " << temp.length() << "\r\n\r\n" <<temp;
-    //     }
-    //     catch(json_parser_error& e) 
-    //     {
-    //         string temp="json error";
-    //         response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << temp.length()<< "\r\n\r\n" << temp;
-    //         return -1;
-    //     }
-    //     catch(exception& e) {
-    //         response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
-    //         return -1;
-    //     }
-    //     catch(...) {
-    //         response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
-    //         return -1;
-    //     }
-    // };
-
-
-
-
+}
 void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
 {
     cout<<"apollo_all:"<<__FILE__<<":"<<__LINE__<<endl;
