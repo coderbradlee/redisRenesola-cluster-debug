@@ -2818,7 +2818,21 @@ int apollo(HttpServer& server,string url)
             return -1;
         }
     };
+        
+        return 0;
+    }
+    catch(exception& e) 
+    {
+          BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
+          return -1;
+    }
+    catch(...) 
+    {
+          BOOST_LOG(test_lg::get())<<__LINE__<<": "<<"unknown error";
+          return -1;
+    }
 }
+
 void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
 {
     cout<<"apollo_all:"<<__FILE__<<":"<<__LINE__<<endl;
@@ -3405,7 +3419,7 @@ void defaultindex(HttpServer& server)
                 post_timezone(response,request);
                 return;
             } 
-            string temp4="/pandora";
+            string temp4="/"+url;
             if(path.compare(0,temp4.length(),temp4) == 0)
             {
                 apollo_all(response,request);
