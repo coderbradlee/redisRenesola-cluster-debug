@@ -25,7 +25,7 @@
 	"requestor":"pandora-em-portal",
 	"requestTime":"2017-05-25 08:00:00"
 }
-curl -X POST http://127.0.0.1:8089/pandora -d "{\"operation\":\"CREATE_SESSION\",	\"requestData\":[{	\"token\":\"afsdf232\",	\"factory\":\"万丰摩轮\",	\"language\":\"中文\",	\"roles\":[{	\"code\":\"JXG\",	\"name\":\"机修工\",	}],\"functions\":[{	\"functionId\":\"3030303\",	\"name\":\"保存为方案\"	}]	}],	\"requestor\":\"pandora-em-portal\",	\"requestTime\":\"2017-05-25 08:00:00\"}"
+curl -X POST http://127.0.0.1:8089/pandora -d "{\"operation\":\"CREATE_SESSION\",	\"requestData\":[{	\"token\":\"afsdf232\",	\"factory\":\"1\",	\"language\":\"2\",	\"roles\":[{	\"code\":\"JXG\",	\"name\":\"3\",	}],\"functions\":[{	\"functionId\":\"3030303\",	\"name\":\"4\"	}]	}],	\"requestor\":\"pandora-em-portal\",	\"requestTime\":\"2017-05-25 08:00:00\"}"
 
 
 2017.03.22
