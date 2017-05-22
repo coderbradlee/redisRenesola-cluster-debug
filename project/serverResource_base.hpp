@@ -511,13 +511,13 @@ void deal_with_flow_number_with_systemno(HttpServer::Response& response,const st
         }
 }
 
-string CREATE_SESSION_HTTP_SESSION2(const ptree& pt)
+string CREATE_SESSION_HTTP_SESSION2(const wptree& pt)
 {
     try
     {   
         ptree pChild = pt.get_child("requestData");
         string key="";
-        for (ptree::iterator it = pChild.begin(); it != pChild.end(); ++it)
+        for (wptree::iterator it = pChild.begin(); it != pChild.end(); ++it)
         {
             std::ostringstream buf; 
             write_json(buf,(it->second),false);
