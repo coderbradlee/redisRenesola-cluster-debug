@@ -2837,9 +2837,9 @@ void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Requ
 {
     // cout<<"apollo_all:"<<__FILE__<<":"<<__LINE__<<endl;
     try {
-        // ptree pt;
-        // cout<<"apollo_all:"<<request->content<<":"<<__FILE__<<":"<<__LINE__<<endl;
-        boost::property_tree::wptree pt;
+        ptree pt;
+        cout<<"apollo_all:"<<request->content.rdbuf()<<":"<<__FILE__<<":"<<__LINE__<<endl;
+        // boost::property_tree::wptree pt;
         
         // boost::property_tree::json_parser::read_json(jsonIStream,wptParse);
 
