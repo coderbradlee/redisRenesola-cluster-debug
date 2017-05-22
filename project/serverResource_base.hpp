@@ -510,4 +510,82 @@ void deal_with_flow_number_with_systemno(HttpServer::Response& response,const st
             response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen("unknown error") << "\r\n\r\n" << "unknown error";
         }
 }
+
+string CREATE_SESSION_HTTP_SESSION2(const ptree& pt)
+{
+    try
+    {   
+        ptree pChild = pt.get_child("requestData");
+        string key="";
+        for (ptree::iterator it = pChild.begin(); it != pChild.end(); ++it)
+        {
+            std::ostringstream buf; 
+            write_json(buf,(it->second),false);
+            std::string json = buf.str();
+            cout<<json<<":"<<__FILE__<<":"<<__LINE__<<endl;
+            if(json.empty())
+            {
+                throw std::runtime_error(std::string("requestData is empty!"));
+            }
+            key=it->second.get<string>("token");
+
+            string value=json;
+            
+            string tempkey="{KV_TOKEN}:"+key;
+            //cout<<tempkey<<endl;
+            
+            if(!(bool)static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "set %s %s", tempkey.c_str(), value.c_str())))
+            {
+                throw std::runtime_error(std::string("error set to redis"));
+            }
+        }
+        //return
+        basic_ptree<std::string, std::string> retJson;
+        
+        retJson.put<int>("errorCode",200);
+        retJson.put<std::string>("message","session write to cache[KV_TOKEN] successfully");
+        retJson.put<std::string>("replyData",key);
+        retJson.put<std::string>("replier","pandora-cache");
+        //获取时间
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        retJson.put<std::string>("replyTime",now_str);
+        std::stringstream ss;
+        write_json(ss, retJson);
+        return ss.str();
+    }
+    catch(json_parser_error& e) 
+    {
+        basic_ptree<std::string, std::string> retJson;
+        retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
+        retJson.put<std::string>("message","json read or write error");
+        retJson.put<std::string>("replyData",e.what());
+        retJson.put<std::string>("replier","pandora-cache");
+
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        retJson.put<std::string>("replyTime",now_str);
+        std::stringstream ss;
+        write_json(ss, retJson);
+        BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
+        return ss.str();
+    }
+    catch(exception& e) 
+    {
+        basic_ptree<std::string, std::string> retJson;
+        retJson.put<int>("errorCode",CREATE_SESSION_UNKNOWN_ERROR);
+        retJson.put<std::string>("message","create session unknown error");
+        retJson.put<std::string>("replyData",e.what());
+        retJson.put<std::string>("replier","pandora-cache");
+
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        ////cout<<now_str<<endl;
+        retJson.put<std::string>("replyTime",now_str);
+        std::stringstream ss;
+        write_json(ss, retJson);
+        BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
+        return ss.str();
+    }
+}
 #endif	

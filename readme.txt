@@ -1,4 +1,25 @@
-﻿2017.03.22
+﻿2017.05.22
+改变原来的session接口：
+
+{
+	"operation":"CREATE_SESSION",
+	"requestData":[{
+	"token":"afsdf232",
+	"factory":"万丰摩轮"，
+	"language":"中文",
+	"roles":[{
+	"code":"JXG",
+	"name":"机修工",
+	}],"functions":[{
+	"functionId":"3030303",
+	"name":"保存为方案"
+	}]
+	}],
+	"requestor":"pandora-em-portal",
+	"requestTime":"2017-05-25 08:00:00"
+}
+
+2017.03.22
 关于invoice_no的产生，之前的流水号规则如下：
 1、UK、ZA、FR、IT、DE、TR、RU、PA、US、CA、MX、BR、JP、TH这些公司流水号按公司产生，忽略后面的类型，即同一个公司一个池
 2、其他公司按公司+类型产生流水号，即公司+类型为一个池

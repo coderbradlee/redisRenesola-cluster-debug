@@ -2852,7 +2852,8 @@ void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Requ
         }
         else if((operation.compare("CREATE_SESSION")==0))
         {
-            retString=CREATE_SESSION_HTTP_SESSION(pt);
+            // retString=CREATE_SESSION_HTTP_SESSION(pt);
+            retString=CREATE_SESSION_HTTP_SESSION2(pt);
             retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
             response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
         }
