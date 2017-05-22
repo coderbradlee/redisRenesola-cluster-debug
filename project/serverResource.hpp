@@ -508,10 +508,10 @@ void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Requ
         std::getline(request->content, text);
         const auto& j = nlohmann_map::json::parse(text);
  
-        const auto& sales_order_id = j["sales_order_id"];
+        const auto& operations = j["operation"];
 
         string retString;
-        string operation=sales_order_id;
+        string operation=operations;
         bool retBool;
         if((operation.compare("OVER_WRITE")==0))
         {
