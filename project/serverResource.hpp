@@ -724,7 +724,7 @@ string CREATE_SESSION_HTTP_SESSION(const ptree& pt)
 				retJson.put<int>("errorCode",CREATE_SESSION_KEY_EXIST);
 				retJson.put<std::string>("message","session key already exist");
 				retJson.put<std::string>("replyData","");
-				retJson.put<std::string>("replier","apollo-cache");
+				retJson.put<std::string>("replier","pandora-cache");
 
 				ptime now = second_clock::local_time();  
 				string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -744,7 +744,7 @@ string CREATE_SESSION_HTTP_SESSION(const ptree& pt)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message","session write to cache[KV_SESSION] successfully");
 		retJson.put<std::string>("replyData",key);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		//获取时间
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -759,7 +759,7 @@ string CREATE_SESSION_HTTP_SESSION(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -775,7 +775,7 @@ string CREATE_SESSION_HTTP_SESSION(const ptree& pt)
 		retJson.put<int>("errorCode",CREATE_SESSION_UNKNOWN_ERROR);
 		retJson.put<std::string>("message","create session unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -827,7 +827,7 @@ string ADD_USERID_UNDER_SESSION(const ptree& pt)
 				retJson.put<int>("errorCode",ADD_USERID_KEY_NOT_EXIST);
 				retJson.put<std::string>("message","key not exist");
 				retJson.put<std::string>("replyData","");
-				retJson.put<std::string>("replier","apollo-cache");
+				retJson.put<std::string>("replier","pandora-cache");
 
 				ptime now = second_clock::local_time();  
 				string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -848,7 +848,7 @@ string ADD_USERID_UNDER_SESSION(const ptree& pt)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message","ADD_USERID to cache[KV_SESSION] successfully");
 		retJson.put<std::string>("replyData",key);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -864,7 +864,7 @@ string ADD_USERID_UNDER_SESSION(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -882,7 +882,7 @@ string ADD_USERID_UNDER_SESSION(const ptree& pt)
 		retJson.put<int>("errorCode",ADD_USERID_UNDER_SESSION_UNKNOWN_ERROR);
 		retJson.put<std::string>("message","ADD_USERID to cache[KV_SESSION] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -919,7 +919,7 @@ string DELETE_SESSION(const ptree& pt)
 				retJson.put<int>("errorCode",200);
 				retJson.put<std::string>("message","session remove from cache[KV_SESSION] successfully");
 				retJson.put<std::string>("replyData",key);
-				retJson.put<std::string>("replier","apollo-cache");
+				retJson.put<std::string>("replier","pandora-cache");
 
 				ptime now = second_clock::local_time();  
 				string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -936,7 +936,7 @@ string DELETE_SESSION(const ptree& pt)
 				retJson.put<int>("errorCode",DELETE_SESSION_KEY_NOT_EXIST);
 				retJson.put<std::string>("message","key not exist");
 				retJson.put<std::string>("replyData",key);
-				retJson.put<std::string>("replier","apollo-cache");
+				retJson.put<std::string>("replier","pandora-cache");
 
 				ptime now = second_clock::local_time();  
 				string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -955,7 +955,7 @@ string DELETE_SESSION(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -973,7 +973,7 @@ string DELETE_SESSION(const ptree& pt)
 		retJson.put<int>("errorCode",DELETE_SESSION_UNKNOWN_ERROR);
 		retJson.put<std::string>("message","session remove from cache[KV_SESSION] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1034,7 +1034,7 @@ string QUERY_SESSION(const ptree& pt)
 				ptree vectorReplyData;
 				vectorReplyData.push_back(std::make_pair("", childrenpt));
 				retJson.add_child("replyData", vectorReplyData);
-				retJson.put("replier","apollo-cache");
+				retJson.put("replier","pandora-cache");
 
 				ptime now = second_clock::local_time();  
 				string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1058,7 +1058,7 @@ string QUERY_SESSION(const ptree& pt)
 				vectorReplyData.push_back(std::make_pair("", childrenpt));
 				retJson.add_child("replyData", vectorReplyData);
 				
-				retJson.put<std::string>("replier","apollo-cache");
+				retJson.put<std::string>("replier","pandora-cache");
 
 				ptime now = second_clock::local_time();  
 				string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1077,7 +1077,7 @@ string QUERY_SESSION(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1102,7 +1102,7 @@ string QUERY_SESSION(const ptree& pt)
 		vectorReplyData.push_back(std::make_pair("", childrenpt));
 		retJson.add_child("replyData", vectorReplyData);
 		
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1154,7 +1154,7 @@ string UPDATE_SESSION_DEADLINE(const ptree& pt)
 				retJson.put("errorCode",200);
 				retJson.put("message","deadline update to cache[KV_SESSION] successfully");
 				retJson.put("replyData",key);
-				retJson.put("replier","apollo-cache");
+				retJson.put("replier","pandora-cache");
 
 				ptime now = second_clock::local_time();  
 				string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1171,7 +1171,7 @@ string UPDATE_SESSION_DEADLINE(const ptree& pt)
 				retJson.put<int>("errorCode",QUERY_SESSION_KEY_NOT_EXIST);
 				retJson.put<std::string>("message","session do not exsist in cache[KV_SESSION]");
 				retJson.put("replyData","");
-				retJson.put<std::string>("replier","apollo-cache");
+				retJson.put<std::string>("replier","pandora-cache");
 
 				ptime now = second_clock::local_time();  
 				string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1190,7 +1190,7 @@ string UPDATE_SESSION_DEADLINE(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1208,7 +1208,7 @@ string UPDATE_SESSION_DEADLINE(const ptree& pt)
 		retJson.put<int>("errorCode",UPDATE_SESSION_DEADLINE_UNKNOWN_ERROR);
 		retJson.put<std::string>("message","deadline update to cache[KV_SESSION] unknown error");
 		retJson.put("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1261,7 +1261,7 @@ string BATCH_CREATE_AREAS(const ptree& pt)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message","BATCH_CREATE_AREAS to cache[KV_MF] successfully");
 		retJson.put<std::string>("replyData",keyall);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1277,7 +1277,7 @@ string BATCH_CREATE_AREAS(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1295,7 +1295,7 @@ string BATCH_CREATE_AREAS(const ptree& pt)
 		retJson.put<int>("errorCode",BATCH_CREATE_AREAS_UNKNOWN_ERROR);
 		retJson.put<std::string>("message","BATCH_CREATE_AREAS to cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1350,7 +1350,7 @@ string LIST_AREAS_BY_KEYS(const ptree& pt)
 			}	
 		}
 		retJson.add_child("replyData", retchidren);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		////cout<<now_str<<endl;
@@ -1380,7 +1380,7 @@ string LIST_AREAS_BY_KEYS(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1398,7 +1398,7 @@ string LIST_AREAS_BY_KEYS(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","LIST_AREAS from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1453,7 +1453,7 @@ string LIST_AREAS_BY_KEYWORDS(const ptree& pt)
 		}
 		freeReplyObject(reply);
 		retJson.add_child("replyData", retchidren);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		//cout<<now_str<<endl;
@@ -1484,7 +1484,7 @@ string LIST_AREAS_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1502,7 +1502,7 @@ string LIST_AREAS_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","LIST_AREAS all from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1553,7 +1553,7 @@ string DELETE_AREAS_BY_KEYS(const ptree& pt)
 			throw std::runtime_error(std::string("key does not exist"));
 		}
 		retJson.put<std::string>("replyData", keyall);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		//cout<<now_str<<endl;
@@ -1568,7 +1568,7 @@ string DELETE_AREAS_BY_KEYS(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1586,7 +1586,7 @@ string DELETE_AREAS_BY_KEYS(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","DELETE_AREAS from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1640,7 +1640,7 @@ string DELETE_AREAS_BY_KEYWORDS(const ptree& pt)
 			throw std::runtime_error(std::string("no keys deleted"));
 		}
 		retJson.put<std::string>("replyData", keyall);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		//cout<<now_str<<endl;
@@ -1655,7 +1655,7 @@ string DELETE_AREAS_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1673,7 +1673,7 @@ string DELETE_AREAS_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","DELETE_AREAS all from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1726,7 +1726,7 @@ string BATCH_CREATE_LANGUAGE(const ptree& pt)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message","BATCH_CREATE_LANGUAGE to cache[KV_MF] successfully");
 		retJson.put<std::string>("replyData",keyall);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1742,7 +1742,7 @@ string BATCH_CREATE_LANGUAGE(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1760,7 +1760,7 @@ string BATCH_CREATE_LANGUAGE(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","BATCH_CREATE_LANGUAGE to cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1820,7 +1820,7 @@ string LIST_LANGUAGE_BY_KEYS(const ptree& pt)
 			}
 		}
 		retJson.add_child("replyData", retchidren);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		////cout<<now_str<<endl;
@@ -1845,7 +1845,7 @@ string LIST_LANGUAGE_BY_KEYS(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1863,7 +1863,7 @@ string LIST_LANGUAGE_BY_KEYS(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","LIST_LANGUAGE from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1919,7 +1919,7 @@ string LIST_LANGUAGE_BY_KEYWORDS(const ptree& pt)
 		}
 		freeReplyObject(reply);
 		retJson.add_child("replyData", retchidren);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		////cout<<now_str<<endl;
@@ -1944,7 +1944,7 @@ string LIST_LANGUAGE_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -1962,7 +1962,7 @@ string LIST_LANGUAGE_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","LIST_LANGUAGE all from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2014,7 +2014,7 @@ string BATCH_CREATE_SHIPVIA(const ptree& pt)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message","BATCH_CREATE_SHIPVIA to cache[KV_MF] successfully");
 		retJson.put<std::string>("replyData",keyall);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2030,7 +2030,7 @@ string BATCH_CREATE_SHIPVIA(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2048,7 +2048,7 @@ string BATCH_CREATE_SHIPVIA(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","BATCH_CREATE_SHIPVIA to cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2108,7 +2108,7 @@ string LIST_SHIPVIA_BY_KEYS(const ptree& pt)
 			}
 		}
 		retJson.add_child("replyData", retchidren);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		////cout<<now_str<<endl;
@@ -2133,7 +2133,7 @@ string LIST_SHIPVIA_BY_KEYS(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2151,7 +2151,7 @@ string LIST_SHIPVIA_BY_KEYS(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","LIST_SHIPVIA from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2207,7 +2207,7 @@ string LIST_SHIPVIA_BY_KEYWORDS(const ptree& pt)
 		}
 		freeReplyObject(reply);
 		retJson.add_child("replyData", retchidren);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		////cout<<now_str<<endl;
@@ -2232,7 +2232,7 @@ string LIST_SHIPVIA_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message","json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2250,7 +2250,7 @@ string LIST_SHIPVIA_BY_KEYWORDS(const ptree& pt)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message","LIST_SHIPVIA all from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2305,7 +2305,7 @@ string GENERAL_BATCH_CREATE(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message",operation+" to cache[KV_MF] successfully");
 		retJson.put<std::string>("replyData",keyall);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2321,7 +2321,7 @@ string GENERAL_BATCH_CREATE(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message",operation+" to cache[KV_MF]:json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2339,7 +2339,7 @@ string GENERAL_BATCH_CREATE(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message",operation+" to cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2397,7 +2397,7 @@ string GENERAL_LIST_BY_KEYS(const ptree& pt,string keyTitle,string operation)
 			}	
 		}
 		retJson.add_child("replyData", retchidren);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		////cout<<now_str<<endl;
@@ -2428,7 +2428,7 @@ string GENERAL_LIST_BY_KEYS(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message",operation+" from cache[KV_MF]:json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2446,7 +2446,7 @@ string GENERAL_LIST_BY_KEYS(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message",operation+" from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2502,7 +2502,7 @@ string GENERAL_LIST_BY_KEYWORDS(const ptree& pt,string keyTitle,string operation
 		}
 		freeReplyObject(reply);
 		retJson.add_child("replyData", retchidren);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		////cout<<now_str<<endl;
@@ -2533,7 +2533,7 @@ string GENERAL_LIST_BY_KEYWORDS(const ptree& pt,string keyTitle,string operation
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message",operation+" all from cache[KV_MF]:json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2551,7 +2551,7 @@ string GENERAL_LIST_BY_KEYWORDS(const ptree& pt,string keyTitle,string operation
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message",operation+" all from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2602,7 +2602,7 @@ string SET_USER_ROLE(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",200);
 		retJson.put<std::string>("message",operation+" to cache[KV_MF] successfully");
 		retJson.put<std::string>("replyData",keyall);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2618,7 +2618,7 @@ string SET_USER_ROLE(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message",operation+" to cache[KV_MF]:json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2636,7 +2636,7 @@ string SET_USER_ROLE(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message",operation+" to cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2699,7 +2699,7 @@ string GET_USER_ROLE(const ptree& pt,string keyTitle,string operation)
 			}
 		}
 		retJson.add_child("replyData", retchidren);
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
 		////cout<<now_str<<endl;
@@ -2730,7 +2730,7 @@ string GET_USER_ROLE(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
 		retJson.put<std::string>("message",operation+" from cache[KV_MF]:json read or write error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2748,7 +2748,7 @@ string GET_USER_ROLE(const ptree& pt,string keyTitle,string operation)
 		retJson.put<int>("errorCode",UNKNOWN_ERROR);
 		retJson.put<std::string>("message",operation+" from cache[KV_MF] unknown error");
 		retJson.put<std::string>("replyData",e.what());
-		retJson.put<std::string>("replier","apollo-cache");
+		retJson.put<std::string>("replier","pandora-cache");
 
 		ptime now = second_clock::local_time();  
 		string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
@@ -2835,10 +2835,10 @@ int apollo(HttpServer& server,string url)
 
 void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
 {
-    cout<<"apollo_all:"<<__FILE__<<":"<<__LINE__<<endl;
+    // cout<<"apollo_all:"<<__FILE__<<":"<<__LINE__<<endl;
     try {
         ptree pt;
-        cout<<url<<__FILE__<<__LINE__<<endl;
+        cout<<"apollo_all:"<<request->content<<":"<<__FILE__<<":"<<__LINE__<<endl;
         read_json(request->content, pt);
         
         ////cout<<__LINE__<<endl;
@@ -3282,12 +3282,12 @@ void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Requ
     catch(json_parser_error& e) 
     {
         //cout<<e.what()<<endl;
-        //{"errorCode":200,"message":"session read from cache[2] successfully","replyData":[{"sessionId":"01234567890123456789","value":{"userId":"01234567890123456789"}}],"replier":"apollo-cache","replyTime":"2015-05-25 08:00:00"}
+        //{"errorCode":200,"message":"session read from cache[2] successfully","replyData":[{"sessionId":"01234567890123456789","value":{"userId":"01234567890123456789"}}],"replier":"pandora-cache","replyTime":"2015-05-25 08:00:00"}
         ptree retJson;
         retJson.put("errorCode",JSON_READ_OR_WRITE_ERROR);
         retJson.put("message","json parser error");
         retJson.put("replyData",e.what());
-        retJson.put("replier","apollo-cache");
+        retJson.put("replier","pandora-cache");
 
         ptime now = second_clock::local_time();  
         string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
