@@ -2846,7 +2846,7 @@ void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Requ
         read_json(request->content, pt);
         
         ////cout<<__LINE__<<endl;
-        string operation=pt.get<string>(L"operation");
+        string operation=pt.get<wstring>(L"operation");
         //string dataType=pt.get<string>("dataType");
         string retString;
         bool retBool;
