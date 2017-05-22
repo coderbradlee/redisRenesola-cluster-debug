@@ -1,6 +1,13 @@
 ﻿2017.05.22
 改变原来的session接口：
-
+{
+	"operation":"DELETE_SESSION",
+	"requestData":[{
+	"token":"1521212"
+	}],
+	"requestor":"pandora-em-portal",
+	"requestTime":"2017-05-25 08:00:00"
+}
 {
 	"operation":"CREATE_SESSION",
 	"requestData":[{
