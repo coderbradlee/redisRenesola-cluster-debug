@@ -2,202 +2,9 @@
 #define	SERVER_RESOURCE_HPP
 
 #include "serverResource_base.hpp"
+#include "json_parser/json_map.hpp"
+#include "json_parser/json_fifo_map.hpp"
 
-
-//////only for test web server
-void t_area(HttpServer& server)
-{
-	try
-	{
-	//set t_area:J4YVQ3SW2Y1KTJEWJWU7 "{\"area_id\":\"J4YVQ3SW2Y1KTJEWJWU7\",\"area_code\":\"1\",\"parent_area_code\":\"\",\"full_name\":\"Africa\",\"short_name\":\"Africa\",\"dr\":0,\"data_version\":1}"
-    server.resource["^/t_area$"]["POST"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
-        try {
-            ptree pt;
-			read_json(request->content, pt);
-			
-            string area_id=pt.get<string>("area_id");
-			string area_code=pt.get<string>("area_code");
-			string parent_area_code=pt.get<string>("parent_area_code");
-			string full_name=pt.get<string>("full_name");
-			string short_name=pt.get<string>("short_name");
-			int dr=pt.get<int>("dr");
-			int data_version=pt.get<int>("data_version");
-			/*std::cout<<"area_id:"<<area_id<<endl;
-			std::cout<<"area_code:"<<area_code<<endl;
-			std::cout<<"parent_area_code:"<<parent_area_code<<endl;
-			std::cout<<"full_name:"<<full_name<<endl;
-			std::cout<<"short_name:"<<short_name<<endl;
-			std::cout<<"dr:"<<dr<<endl;
-			std::cout<<"data_version:"<<data_version<<endl;*/
-
-			//********重新拼接json包并写日志和redis**********************8
-			//ptree pt;
-			//pt.put ("foo", "bar");
-			std::ostringstream buf; 
-			write_json(buf, pt,false);
-			std::string json = buf.str();
-			//cout<<json<<endl;
-			// write to redis
-			Connection conn(redisHost, redisPort, redisPassword);
-			if(!conn.set("t_area:"+area_id, json))
-			{
-				throw std::runtime_error(std::string("error set to redis"));
-			}
-
-			//******************************************************
-
-			response << "HTTP/1.1 200 OK\r\nContent-Length: " << 3 << "\r\n\r\n" << "200";
-            //response << "200";
-        }
-        catch(exception& e) {
-            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
-        }
-    };
-	}
-	catch(exception& e) 
-	{
-          BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
-	}
-}
-void t_area_get(HttpServer& server)
-{
-	try
-	{
-	//get t_area:J4YVQ3SW2Y1KTJEWJWU7 
-	//"{\"area_id\":\"J4YVQ3SW2Y1KTJEWJWU7\"}
-	//return "{\"area_id\":\"J4YVQ3SW2Y1KTJEWJWU7\",\"area_code\":\"1\",\"parent_area_code\":\"\",\"full_name\":\"Africa\",\"short_name\":\"Africa\",\"dr\":0,\"data_version\":1}"
-    server.resource["^/t_area_get$"]["POST"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request){
-        try {
-            ptree pt;
-			read_json(request->content, pt);
-			
-            string area_id=pt.get<string>("area_id");
-			
-			
-			/*std::ostringstream buf; 
-			write_json(buf, pt,false);
-			std::string json = buf.str();*/
-			//cout<<json<<endl;
-			// write to redis
-			Connection conn(redisHost, redisPort, redisPassword);
-			StringReply ret= conn.get("t_area:"+area_id);
-			string retString;
-			if(!ret.result().is_initialized())
-			{
-				throw std::runtime_error(std::string("error get info from redis"));
-			}
-			else
-			{
-				retString=(string)ret;
-				cout<<retString<<endl;
-			}
-			//******************************************************
-
-			response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" << retString;
-            //response << "200";
-        }
-		
-        catch(exception& e) {
-            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
-        }
-    };
-	}
-	catch(exception& e) 
-	{
-          BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
-	}
-}
-void t_function(HttpServer& server)
-{
-	try
-	{
-	//set t_function:A1 "{\"function_id\":\"A1\",\"code\":\"a1\",\"name\":\"a1name\",\"description\":\"a1descrip\",\"up_level_function_id\":null,\"level\":1,\"type\":1,\"note\":\"Alibaba\",\"dr\":0,\"data_version\":1}"
-    server.resource["^/t_function$"]["POST"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
-        try {
-            ptree pt;
-			read_json(request->content, pt);
-			
-            string function_id=pt.get<string>("function_id");
-			string code=pt.get<string>("code");
-			string name=pt.get<string>("name");
-			string description=pt.get<string>("description");
-			string up_level_function_id=pt.get<string>("up_level_function_id");
-			int level=pt.get<int>("level");
-			int type=pt.get<int>("type");
-			string note=pt.get<string>("note");
-			int dr=pt.get<int>("dr");
-			int data_version=pt.get<int>("data_version");
-			//********重新拼接json包并写日志和redis**********************8
-			//ptree pt;
-			//pt.put ("foo", "bar");
-			std::ostringstream buf; 
-			write_json(buf, pt,false);
-			std::string json = buf.str();
-			//cout<<json<<endl;
-			// write to redis
-			Connection conn(redisHost, redisPort, redisPassword);
-			if(!conn.set("t_function:"+function_id, json))
-			{
-				throw std::runtime_error(std::string("error set to redis"));
-			}
-
-			//******************************************************
-
-			response << "HTTP/1.1 200 OK\r\nContent-Length: " << 3 << "\r\n\r\n" << "200";
-            //response << "200";
-        }
-        catch(exception& e) {
-            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
-        }
-    };
-	}
-	catch(exception& e) 
-	{
-          BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
-	}
-}
-void t_function_get(HttpServer& server)
-{
-	try
-	{
-	//curl -X POST http://localhost:8080/t_function_get -d "{\"function_id\":\"A1\"}"
-	//get t_function:A1 
-	//"{\"function_id\":\"A1\",\"code\":\"a1\",\"name\":\"a1name\",\"description\":\"a1descrip\",\"up_level_function_id\":null,\"level\":\"1\",\"type\":\"1\",\"note\":\"Alibaba\",\"dr\":\"0\",\"data_version\":\"1\"}\n"
-	//{"function_id":"A1","code":"a1","name":"a1name","description":"a1descrip","up_level_function_id":"null","level":"1","type":"1","note":"Alibaba","dr":"0","data_version":"1"}
-    server.resource["^/t_function_get$"]["POST"]=[](HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request) {
-        try {
-            ptree pt;
-			read_json(request->content, pt);
-			
-            string function_id=pt.get<string>("function_id");
-			
-			Connection conn(redisHost, redisPort, redisPassword);
-			StringReply ret= conn.get("t_function:"+function_id);
-			string retString;
-			if(!ret.result().is_initialized())
-			{
-				throw std::runtime_error(std::string("error get info from redis"));
-			}
-			else
-			{
-				retString=(string)ret;
-				cout<<retString<<endl;
-			}
-			//******************************************************
-
-			response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" << retString;
-            //response << "200";
-        }
-        catch(exception& e) {
-            response << "HTTP/1.1 400 Bad Request\r\nContent-Length: " << strlen(e.what()) << "\r\n\r\n" << e.what();
-        }
-    };
-	}
-	catch(exception& e) 
-	{
-          BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
-	}
-}
 void deal_with_flow_number(HttpServer::Response& response, std::shared_ptr<HttpServer::Request> request)
 {
      try 
@@ -685,19 +492,24 @@ void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Requ
 {
     // cout<<"apollo_all:"<<__FILE__<<":"<<__LINE__<<endl;
     try {
-        ptree pt;
+        // ptree pt;
         // cout<<"apollo_all:"<<request->content.rdbuf()<<":"<<__FILE__<<":"<<__LINE__<<endl;
         // boost::property_tree::wptree pt;
         
         // boost::property_tree::json_parser::read_json(jsonIStream,wptParse);
 
-        read_json(request->content, pt);
+        // read_json(request->content, pt);
         
         ////cout<<__LINE__<<endl;
         // string operation=pt.get<wstring>(L"operation");
         //string dataType=pt.get<string>("dataType");
-        string operation=pt.get<string>("operation");
+        // string operation=pt.get<string>("operation");
+        const auto& j = nlohmann_map::json::parse(text);
+ 
+        const auto& sales_order_id = j["sales_order_id"];
+
         string retString;
+        string operation=sales_order_id;
         bool retBool;
         if((operation.compare("OVER_WRITE")==0))
         {
