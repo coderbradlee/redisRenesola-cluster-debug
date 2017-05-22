@@ -522,7 +522,7 @@ void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Requ
         {
             // retString=CREATE_SESSION_HTTP_SESSION(pt);
             cout<<__LINE__<<endl;
-            // retString=CREATE_SESSION_HTTP_SESSION2(pt);
+            retString=CREATE_SESSION_HTTP_SESSION2(pt);
             retString.erase(remove(retString.begin(), retString.end(), '\n'), retString.end());
             response << "HTTP/1.1 200 OK\r\nContent-Length: " << retString.length() << "\r\n\r\n" <<retString;
         }
