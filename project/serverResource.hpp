@@ -504,7 +504,8 @@ void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Requ
         // string operation=pt.get<wstring>(L"operation");
         //string dataType=pt.get<string>("dataType");
         // string operation=pt.get<string>("operation");
-        string text(std::istreambuf_iterator<char>(request->content), {});
+        std::string text;
+        std::getline(request->content, text);
         const auto& j = nlohmann_map::json::parse(text);
  
         const auto& sales_order_id = j["sales_order_id"];
