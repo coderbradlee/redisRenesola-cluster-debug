@@ -697,11 +697,11 @@ void serverRedisResource(HttpServer& server,string redisHost,string redisPort,st
 		 cluster_p = HiredisCommand<ThreadPoolCluster>::createCluster( redisHost.c_str(),boost::lexical_cast<int>(redisPort));
 
 		//serverResource(server);
-		t_area(server);
-		//testget(server);
-		t_area_get(server);
-		t_function(server);
-		t_function_get(server);
+		// t_area(server);
+		// //testget(server);
+		// t_area_get(server);
+		// t_function(server);
+		// t_function_get(server);
 		apollo(server,url);
 		defaultindex(server);
 	}
