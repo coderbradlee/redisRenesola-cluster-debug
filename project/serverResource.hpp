@@ -506,12 +506,13 @@ void apollo_all(HttpServer::Response& response, std::shared_ptr<HttpServer::Requ
         // string operation=pt.get<string>("operation");
         std::string text;
         std::getline(request->content, text);
-        const auto& j = nlohmann_map::json::parse(text);
+        cout<<text<<endl;
+        // const auto& j = nlohmann_map::json::parse(text);
  
-        const auto& operations = j["operation"];
+        // const auto& operations = j["operation"];
 
         string retString;
-        string operation=operations;
+        // string operation=operations;
         bool retBool;
         if((operation.compare("OVER_WRITE")==0))
         {
