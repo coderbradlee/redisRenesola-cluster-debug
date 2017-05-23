@@ -49,6 +49,7 @@ curl -X POST http://127.0.0.1:8088/pandora -d '{	"operation":"DELETE_SESSION",	"
 
 curl -X POST http://127.0.0.1:8088/pandora -d '{   "operation":"QUERY_SESSION",   "requestData":[{    "token":"afsdf232"}],"requestor":"pandora-em-portal","requestTime":"2015-05-25 08:00:00"}'
 
+{    "errorCode": "200",    "message": "query successfully",    "replyData": {        "token": "afsdf232",        "factory": "万丰摩轮",        "language": "中文",        "roles": [            {                "code": "JXG",                "name": "机修工"            }        ],        "functions": [            {                "functionId": "3030303",                "name": "保存为方案"            }        ]    },    "replier": "pandora-cache",    "replyTime": "2017-05-23 13:12:27"}
 
 2017.03.22
 关于invoice_no的产生，之前的流水号规则如下：
