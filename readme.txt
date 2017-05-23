@@ -34,11 +34,21 @@
 "requestTime":"2015-05-25 08:00:00"
 }
 
-curl -X POST http://127.0.0.1:8089/pandora -d '{	"operation":"CREATE_SESSION",	"requestData":[{	"token":"afsdf232",	"factory":"万丰摩轮",	"language":"中文",	"roles":[{	"code":"JXG",	"name":"机修工"	}],"functions":[{	"functionId":"3030303",	"name":"保存为方案"	}]	}],	"requestor":"pandora-em-portal",	"requestTime":"2017-05-25 08:00:00"}'
+curl -X POST http://127.0.0.1:8088/pandora -d '{	"operation":"CREATE_SESSION",	"requestData":[{	"token":"afsdf232",	"factory":"万丰摩轮",	"language":"中文",	"roles":[{	"code":"JXG",	"name":"机修工"	}],"functions":[{	"functionId":"3030303",	"name":"保存为方案"	}]	}],	"requestor":"pandora-em-portal",	"requestTime":"2017-05-25 08:00:00"}'
+返回：
+1、{    "errorCode": "200",    "message": "write to cache[KV_TOKEN] successfully",    "replyData": "token:afsdf232",    "replier": "pandora-cache",    "replyTime": "2017-05-23 11:14:36"}
+2、{    "errorCode": "-8010",    "message": "json parser error",    "replyData": "<unspecified file>(1): expected value",    "replier": "pandora-cache",    "replyTime": "2017-05-23 11:15:31"}
 
-curl -X POST http://127.0.0.1:8089/pandora -d '{   "operation":"QUERY_SESSION",   "requestData":[{    "token":"afsdf232"}],"requestor":"pandora-em-portal","requestTime":"2015-05-25 08:00:00"}'
+curl -X POST http://127.0.0.1:8088/pandora -d '{	"operation":"DELETE_SESSION",	"requestData":[{	"token":"afsdf232"	}],	"requestor":"pandora-em-portal",	"requestTime":"2017-05-25 08:00:00"}'
 
-curl -X POST http://127.0.0.1:8089/pandora -d '{	"operation":"DELETE_SESSION",	"requestData":[{	"token":"afsdf232"	}],	"requestor":"pandora-em-portal",	"requestTime":"2017-05-25 08:00:00"}'
+返回：
+1、{    "errorCode": "200",    "message": "delete successfully",    "replyData": "token:afsdf232",    "replier": "pandora-cache",    "replyTime": "2017-05-23 10:29:32"}
+2、
+{    "errorCode": "-8010",    "message": "json parser error",    "replyData": "<unspecified file>(1): expected ',' or '}'",    "replier": "pandora-cache",    "replyTime": "2017-05-23 11:23:33"}
+
+
+curl -X POST http://127.0.0.1:8088/pandora -d '{   "operation":"QUERY_SESSION",   "requestData":[{    "token":"afsdf232"}],"requestor":"pandora-em-portal","requestTime":"2015-05-25 08:00:00"}'
+
 
 2017.03.22
 关于invoice_no的产生，之前的流水号规则如下：
