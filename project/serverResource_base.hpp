@@ -611,10 +611,14 @@ string QUERY_SESSION(const ptree& pt)
         }
         //return
         basic_ptree<std::string, std::string> retJson;
-        
+        ptree value_tree;
+        std::istringstream is(value);
+        read_json(is, value_tree);
+
         retJson.put<int>("errorCode",200);
-        retJson.put<std::string>("message","write to cache[KV_TOKEN] successfully");
-        retJson.put<std::string>("replyData",value);
+        retJson.put<std::string>("message","query successfully");
+        // retJson.put<std::string>("replyData",value);
+        retJson.add_child("replyData", value_tree);
         retJson.put<std::string>("replier","pandora-cache");
         //获取时间
         ptime now = second_clock::local_time();  
