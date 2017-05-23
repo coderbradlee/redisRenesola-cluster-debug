@@ -541,7 +541,7 @@ string CREATE_SESSION_HTTP_SESSION2(const ptree& pt)
         }
         //return
         basic_ptree<std::string, std::string> retJson;
-        
+        key="token:"+key;
         retJson.put<int>("errorCode",200);
         retJson.put<std::string>("message","write to cache[KV_TOKEN] successfully");
         retJson.put<std::string>("replyData",key);
@@ -688,7 +688,7 @@ string DELETE_SESSION(const ptree& pt)
         }
         //return
         basic_ptree<std::string, std::string> retJson;
-        
+        token="token:"+token;
         retJson.put<int>("errorCode",200);
         retJson.put<std::string>("message","delete successfully");
         retJson.put<std::string>("replyData",token);
