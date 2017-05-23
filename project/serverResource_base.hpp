@@ -605,17 +605,10 @@ string QUERY_SESSION(const ptree& pt)
                 throw std::runtime_error(std::string("requestData is empty!"));
             }
             key=it->second.get<string>("token");
-
-            string value=json;
             
             string tempkey="{KV_TOKEN}:"+key;
-            //cout<<tempkey<<endl;
-            
-            // if(!(bool)static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "set %s %s", tempkey.c_str(), value.c_str())))
-            // {
-            //     throw std::runtime_error(std::string("error set to redis"));
-            // }
-            redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), "set %s %s", tempkey.c_str(), value.c_str()));
+            string get_command="get "+tempkey;
+            redisReply * reply=static_cast<redisReply*>( HiredisCommand<ThreadPoolCluster>::Command( cluster_p, tempkey.c_str(), get_command.c_str()));
             string value="";
             //cout<<__LINE__<<endl;
             if(reply->str!=nullptr)
