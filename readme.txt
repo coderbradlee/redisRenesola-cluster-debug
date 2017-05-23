@@ -38,7 +38,7 @@ curl -X POST http://127.0.0.1:8089/pandora -d '{	"operation":"CREATE_SESSION",	"
 
 curl -X POST http://127.0.0.1:8089/pandora -d '{   "operation":"QUERY_SESSION",   "requestData":[{    "token":"afsdf232"}],"requestor":"pandora-em-portal","requestTime":"2015-05-25 08:00:00"}'
 
-
+curl -X POST http://127.0.0.1:8089/pandora -d '{	"operation":"DELETE_SESSION",	"requestData":[{	"token":"afsdf232"	}],	"requestor":"pandora-em-portal",	"requestTime":"2017-05-25 08:00:00"}'
 
 2017.03.22
 关于invoice_no的产生，之前的流水号规则如下：

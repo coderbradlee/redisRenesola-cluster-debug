@@ -665,4 +665,74 @@ string QUERY_SESSION(const ptree& pt)
         return ss.str();
     }
 }
+string DELETE_SESSION(const ptree& pt)
+{
+    try
+    {   
+        ptree pChild = pt.get_child("requestData");
+        string token="";
+        string value="";
+        for (ptree::iterator it = pChild.begin(); it != pChild.end(); ++it)
+        {
+            token=it->second.get<string>("token");
+            
+            string tempkey="{KV_TOKEN}:"+token;
+            string get_command="del "+tempkey;
+            redisReply * reply=static_cast<redisReply*>(HiredisCommand<ThreadPoolCluster>::Command(cluster_p, tempkey.c_str(), get_command.c_str()));
+            if(reply->str!=nullptr)
+            {
+                //cout<<reply->type<<endl;
+              value+=reply->str;
+              //retJson.put<std::string>("flow_number",value);
+            }
+        }
+        //return
+        basic_ptree<std::string, std::string> retJson;
+        
+        retJson.put<int>("errorCode",200);
+        retJson.put<std::string>("message","delete successfully");
+        retJson.put<std::string>("replyData",token);
+        retJson.put<std::string>("replier","pandora-cache");
+        //获取时间
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        retJson.put<std::string>("replyTime",now_str);
+        std::stringstream ss;
+        write_json(ss, retJson);
+        return ss.str();
+    }
+    catch(json_parser_error& e) 
+    {
+        basic_ptree<std::string, std::string> retJson;
+        retJson.put<int>("errorCode",JSON_READ_OR_WRITE_ERROR);
+        retJson.put<std::string>("message","json read or write error");
+        retJson.put<std::string>("replyData",e.what());
+        retJson.put<std::string>("replier","pandora-cache");
+
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        retJson.put<std::string>("replyTime",now_str);
+        std::stringstream ss;
+        write_json(ss, retJson);
+        BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
+        return ss.str();
+    }
+    catch(exception& e) 
+    {
+        basic_ptree<std::string, std::string> retJson;
+        retJson.put<int>("errorCode",CREATE_SESSION_UNKNOWN_ERROR);
+        retJson.put<std::string>("message","create session unknown error");
+        retJson.put<std::string>("replyData",e.what());
+        retJson.put<std::string>("replier","pandora-cache");
+
+        ptime now = second_clock::local_time();  
+        string now_str  =  to_iso_extended_string(now.date()) + " " + to_simple_string(now.time_of_day());  
+        ////cout<<now_str<<endl;
+        retJson.put<std::string>("replyTime",now_str);
+        std::stringstream ss;
+        write_json(ss, retJson);
+        BOOST_LOG(test_lg::get())<<__LINE__<<": "<<e.what();
+        return ss.str();
+    }
+}
 #endif	
