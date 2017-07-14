@@ -292,8 +292,15 @@ namespace SimpleWeb {
     // These two lines test filtering based on severity
     
 					}
-                    BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<" "<<myString;
-					initsink->flush();
+                    if(myString.size()>20000)
+                    {
+                        BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<" content len >20000 bytes";
+                    }
+                    else
+                    {
+                        BOOST_LOG_SEV(slg, notification)<<"request: "<<request->method<<" "<<request->path<<" "<<myString;
+                    }
+                    initsink->flush();
 				// 	//////******************************************/////////////////
 		
                     //If content, read that as well
@@ -412,7 +419,15 @@ namespace SimpleWeb {
 					{
 					   //BOOST_LOG(test_lg::get())<<"response: "<<myString;
 						//BOOST_LOG(test_lg::get())<<stream.rdbuf();
-						BOOST_LOG_SEV(slg, notification)<<"response: "<<myString;
+						
+                        if(myString.size()>20000)
+                        {
+                            BOOST_LOG_SEV(slg, notification)<<"response: content len >20000 bytes";
+                        }
+                        else
+                        {
+                            BOOST_LOG_SEV(slg, notification)<<"response: "<<myString;
+                        }
 					}
 					initsink->flush();
 				///*****************************************/////////////
