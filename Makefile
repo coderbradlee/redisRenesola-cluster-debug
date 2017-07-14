@@ -2,7 +2,7 @@ all: libredispp.a libredispp.so apolloCache
 
 daemon:libredispp.a libredispp.so apolloCacheDaemon
 
-CXXFLAGS ?= -std=c++11 -g -O2 -Isrc -L/usr/local/lib -L. $(EXTRA_CXXFLAGS) -fpermissive -lboost_program_options -lboost_filesystem -lboost_coroutine -lboost_system -lboost_thread -lpthread -lboost_context -lboost_date_time -lboost_log_setup -lboost_log -lredispp -lhiredis -DBOOST_ALL_NO_LIB -DBOOST_ALL_DYN_LINK -lboost-log-mt
+CXXFLAGS ?= -std=c++11 -g -O2 -Isrc -L/usr/local/lib -L. $(EXTRA_CXXFLAGS) -fpermissive -lboost_program_options -lboost_filesystem -lboost_coroutine -lboost_system -lboost_thread -lpthread -lboost_context -lboost_date_time -lboost_log_setup -lboost_log -lredispp -lhiredis -DBOOST_ALL_NO_LIB -DBOOST_ALL_DYN_LINK
 #-DBOOST_LOG_DYN_LINK
 # -DREDIS_DISABLE_CLUSTER
 
